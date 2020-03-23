@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tricrepe.github.io","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#E9574F","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="学习linux, 大神之路">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LINUX NOTE">
+<meta property="og:url" content="http://tricrepe.github.io/2016/07/14/LINUX-NOTE/index.html">
+<meta property="og:site_name" content="Tricrepe">
+<meta property="og:description" content="学习linux, 大神之路">
+<meta property="article:published_time" content="2016-07-14T01:56:55.000Z">
+<meta property="article:modified_time" content="2016-08-23T16:19:50.000Z">
+<meta property="article:author" content="Tricrepe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://tricrepe.github.io/2016/07/14/LINUX-NOTE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>LINUX NOTE | Tricrepe</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tricrepe</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-首页">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-globe"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-便签">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-flag"></i>便签</a>
+
+  </li>
+        <li class="menu-item menu-item-档案夹">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-folder-open"></i>档案夹</a>
+
+  </li>
+        <li class="menu-item menu-item-时间轴">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-hourglass-start"></i>时间轴</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/Tricrepe" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://tricrepe.github.io/2016/07/14/LINUX-NOTE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Tricrepe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tricrepe">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LINUX NOTE
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2016-07-14 09:56:55" itemprop="dateCreated datePublished" datetime="2016-07-14T09:56:55+08:00">2016-07-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2016-08-24 00:19:50" itemprop="dateModified" datetime="2016-08-24T00:19:50+08:00">2016-08-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F/" itemprop="url" rel="index"><span itemprop="name">程序</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>学习linux, 大神之路</p>
+<a id="more"></a>
+
+<h2 id="LINUX-综述"><a href="#LINUX-综述" class="headerlink" title="LINUX 综述"></a>LINUX 综述</h2><ul>
+<li>GUI <code>GRAPHIC USER INTERFACE</code></li>
+<li>CLI <code>COMMAND LINE INTERFACE</code></li>
+</ul>
+<h3 id="命令提示符"><a href="#命令提示符" class="headerlink" title="命令提示符"></a>命令提示符</h3><p><code>prompt, bash(shell)</code></p>
+<ul>
+<li><code>#</code> : root </li>
+<li><code>$</code> : 普通用户</li>
+</ul>
+<h3 id="命令格式："><a href="#命令格式：" class="headerlink" title="命令格式："></a>命令格式：</h3><ul>
+<li><strong>命令</strong> + <strong>选项</strong>（短选项【-l -a = -al】；长选项【–word】）+ <strong>参数</strong>（命令分的作用对象） </li>
+</ul>
+<h3 id="用户的登录"><a href="#用户的登录" class="headerlink" title="用户的登录"></a>用户的登录</h3><ul>
+<li><p>su: switch user </p>
+<blockquote>
+<p>su [-l] 用户名</p>
+</blockquote>
+</li>
+<li><p>passwd: 修改密码 </p>
+</li>
+</ul>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h3><blockquote>
+<p>mkdir 目录也是文件，是路径映射</p>
+</blockquote>
+<h3 id="路径"><a href="#路径" class="headerlink" title="路径"></a>路径</h3><p>从指定起始点到目的地所经过的位置 绝对路径 相对路径</p>
+<ul>
+<li>pwd: print workiong directory</li>
+<li>最顶级目录<code>/</code></li>
+</ul>
+<h3 id="列表-list-ls-列表-l"><a href="#列表-list-ls-列表-l" class="headerlink" title="列表 list: ls 列表 -l"></a>列表 list: ls 列表 -l</h3><blockquote>
+<p>drwxr-xr-x. 2 vagrant vagrant 4096 7月  13 22:22 sync</p>
+</blockquote>
+<h4 id="列表内容"><a href="#列表内容" class="headerlink" title="列表内容"></a>列表内容</h4><ol>
+<li>文件类型: <ul>
+<li>-:普通文件 </li>
+<li>d:目录文件 </li>
+<li>b:块设备文件（block）</li>
+<li>c:字符设备文件（character） </li>
+<li>l:符号链接文件（symbolic link file）</li>
+<li>p:命令管道（pipe）</li>
+<li>s:套接字文件（socket）</li>
+</ul>
+</li>
+<li>文件权限: rwx(owner)rwx(group)rwx(other)</li>
+<li>文件硬链接的次数</li>
+<li>文件的owner</li>
+<li>文件的group</li>
+<li>文件大小（size）: 单位是字节</li>
+<li>时间戳（timestamp）: 最近一次被**的时间<ul>
+<li>访问：access</li>
+<li>修改：modify, 文件内容变更</li>
+<li>改变：change, metadata, 元数据（属性）</li>
+</ul>
+</li>
+</ol>
+<h4 id="列表选项"><a href="#列表选项" class="headerlink" title="列表选项"></a>列表选项</h4><ol>
+<li>-h human readable 作单位转换</li>
+<li>-a 显示以<code>.</code>开头的隐藏文件<ul>
+<li><code>.</code> 表示当前目录</li>
+<li><code>..</code>表示父目录 </li>
+</ul>
+</li>
+<li>-d 显示目录自身属性</li>
+<li>-i index node, 显示文件的缩隐号码</li>
+<li>-R 递归(recursive)显示 </li>
+<li>-r 逆序显示</li>
+</ol>
+<h4 id="切换目录"><a href="#切换目录" class="headerlink" title="切换目录"></a>切换目录</h4><ul>
+<li>cd change directory <ul>
+<li>不加参数 回到用户的主目录（home）</li>
+<li>进入指定用户的主目录 <code>~+USERNAME</code></li>
+<li>cd - : 在当前目录和前一次所在的目录之间来回切换</li>
+</ul>
+</li>
+</ul>
+<h4 id="命令类型："><a href="#命令类型：" class="headerlink" title="命令类型："></a>命令类型：</h4><ul>
+<li>内置命令（shell内置）</li>
+<li>外部命令：在文件系统的某个路径下有一个与命令名称相应的可执行文件</li>
+</ul>
+<h4 id="环境变量：-命名的内存空间"><a href="#环境变量：-命名的内存空间" class="headerlink" title="环境变量： 命名的内存空间"></a>环境变量： 命名的内存空间</h4><ul>
+<li>变量赋值 NAME=Jerry</li>
+<li>printenv 打印环境</li>
+<li>hash 显示缓存指令</li>
+<li>PATH: 使用冒号分隔的路径 命令所在路径必须在PATH中</li>
+</ul>
+<h4 id="type-显示指令属于哪种类型"><a href="#type-显示指令属于哪种类型" class="headerlink" title="type: 显示指令属于哪种类型"></a>type: 显示指令属于哪种类型</h4><h4 id="date-时间管理"><a href="#date-时间管理" class="headerlink" title="date: 时间管理"></a>date: 时间管理</h4><ul>
+<li>硬件时钟：sudo clock/sudo hwclock</li>
+<li>系统时钟：date</li>
+</ul>
+<h4 id="获得命令的使用帮助："><a href="#获得命令的使用帮助：" class="headerlink" title="获得命令的使用帮助："></a>获得命令的使用帮助：</h4><ul>
+<li><p>内部命令: <code>help+cmd</code></p>
+</li>
+<li><p>外部命令： <code>cmd --help</code>  </p>
+</li>
+<li><p>命令手册： <code>man cmd</code> <em>内部命令一般不使用man查看</em></p>
+<ul>
+<li><p>显示cmd摘要             </p>
+<blockquote>
+<p>whatis cmd</p>
+</blockquote>
+</li>
+<li><p>分章节：man 2 read</p>
+<ol>
+<li>用户命令</li>
+<li>系统调用</li>
+<li>库调用</li>
+<li>特殊文件（设备文件）</li>
+<li>文件格式(解释配置文件的语法)</li>
+<li>游戏</li>
+<li>杂项（miscellaneous）</li>
+<li>管理命令（/sbin,/usr/sbin/,/usr/local/sbin）</li>
+</ol>
+</li>
+<li><p>内容语法</p>
+<ol>
+<li>&lt;&gt; ：必须写的</li>
+<li>[] ：可省略的</li>
+<li>… ：可以出现多次 </li>
+<li>| ：多选一</li>
+<li>{}：分组</li>
+</ol>
+</li>
+<li><p>MAN</p>
+<ol>
+<li>NAME: 命令名称及功能简要说明</li>
+<li>SYNOPSIS: 用法说明，包括可用的选项</li>
+<li>DESCRIPTION/OPTION: 命令功能的详尽说明，每一个选项的意义 </li>
+<li>FILES:此命令相关的配置文件</li>
+<li>EXAMPLES:使用实例</li>
+<li>SEE ALSO:另外参照</li>
+<li>翻屏<ul>
+<li>向后翻一屏：SPACE</li>
+<li>向前翻一屏：B</li>
+<li>向后翻一行: ENTER</li>
+<li>向前翻一行: K</li>
+</ul>
+</li>
+<li>查找：<ul>
+<li>/+查找内容：</li>
+<li>n: 下一个</li>
+<li>N: 前一个</li>
+</ul>
+</li>
+<li>退出：Q</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h2><ol>
+<li>/boot: 系统启动相关的文件， 如内核、initrd, 以及grub(bootloader)</li>
+<li>/dev: device设备文件 <ol>
+<li>块设备：随机访问，数据块（硬盘）</li>
+<li>字符设备：线性访问，按字符为单位</li>
+<li>设备号： 主设备号 次设备号</li>
+</ol>
+</li>
+<li>/etc: 存放配置文件 里面主要是纯文本文件</li>
+<li>/home: 用户的家目录，每一个用户的家目录默认为/home/USERNAME</li>
+<li>/root: 管理员的家目录，一般不建议使用root直接登录</li>
+<li>/lib: 库文件<ol>
+<li>静态库 .a</li>
+<li>动态库 windows <code>.dll</code> linux <code>.so</code>(shared object)</li>
+</ol>
+</li>
+<li>/media : 挂载点目录， 挂载移动设备</li>
+<li>/mnt: 挂载点目录， 挂载额外的临时文件系统</li>
+<li>/net: 杂项目录</li>
+<li>/opt: 可选目录 </li>
+<li>/proc: 伪文件系统, 内核映射文件，盛放内核工作的统计数据（系统调优）</li>
+<li>/sys: 伪文件系统， 跟内核设备相关的属性映射文件</li>
+<li>/tmp: 临时文件 每个一个月如果没被访问过会自动被清除 </li>
+<li>/var: 可变化文件 <ol>
+<li>cache 缓存</li>
+<li>lock 文件锁</li>
+<li>log 日志</li>
+<li>mail 用户邮件转存</li>
+<li>run 存放进程id pid</li>
+</ol>
+</li>
+<li>/bin: 可执行文件， 用户命令</li>
+<li>/sbin: 可执行文件，管理命令</li>
+<li>/usr: universal shared read-only 全局共享只读文件<ol>
+<li>/usr/bin 系统运行功能</li>
+<li>/usr/sbin</li>
+<li>/usr/lib</li>
+<li>/usr/local: 第三方软件的安装路径</li>
+</ol>
+</li>
+</ol>
+<h2 id="命令类型"><a href="#命令类型" class="headerlink" title="命令类型"></a>命令类型</h2><h3 id="目录管理：-ls-cd-pwd"><a href="#目录管理：-ls-cd-pwd" class="headerlink" title="目录管理： ls cd pwd"></a>目录管理： ls cd pwd</h3><blockquote>
+<p>mkdir </p>
+</blockquote>
+<ul>
+<li>-p 直接创建目录中的目录 </li>
+<li>-v verbose 显示创建过程 </li>
+<li>{} 花括号可展开 ， 的内容<blockquote>
+<p>mkdir -pv /mnt/test/{x/m,y} </p>
+</blockquote>
+</li>
+</ul>
+<h3 id="文件创建和删除"><a href="#文件创建和删除" class="headerlink" title="文件创建和删除"></a>文件创建和删除</h3><ul>
+<li>touch: 主要作用更改时间戳，也可以创建文件</li>
+<li>stat: 显示时间戳</li>
+<li>vi 1.txt: 通过文本编辑器创建 </li>
+</ul>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><blockquote>
+<p>rm</p>
+</blockquote>
+<ul>
+<li>-i 显示互动</li>
+<li>-f 强制删除</li>
+<li>-r 递归</li>
+</ul>
+<h3 id="复制和移动文件"><a href="#复制和移动文件" class="headerlink" title="复制和移动文件"></a>复制和移动文件</h3><blockquote>
+<p>cp SRC DEST</p>
+</blockquote>
+<ul>
+<li>cp可以复制一个文件到一个文件 复制多个文件到一个目录</li>
+<li>-p 保留复制文件的权限 owner grp 和时间戳</li>
+<li>-P 保持链接的链接属性</li>
+<li>-a 归档复制 常用于备份</li>
+<li>install 也可以用于复制文件 -d 可用于创建目录</li>
+</ul>
+<h3 id="查看文本"><a href="#查看文本" class="headerlink" title="查看文本"></a>查看文本</h3><ol>
+<li>cat 连接并显示</li>
+<li>分屏显示 more : 向后翻 翻到结束自动退出<br>分屏显示 less : 和man一样</li>
+<li>head 显示文件的前十行<br>head -1 /etc/issue</li>
+<li>tail 显示文件的后十行<br>tail -f 查看文件尾部 不退出 等待显示后续追加给文件的新内容</li>
+<li>文本处理<ul>
+<li>cut 裁剪字段 -d指定分隔符 默认为一个空格 -f 指定第几个字段<br>-f1,3 -f1-3</li>
+<li>文本排序 sort 按行首字符在ASCII码表中的顺序排列（首字符相同，比较第二个字符）<ol>
+<li>-n 数值排序</li>
+<li>-r 逆序排序</li>
+<li>-t 字段分隔符</li>
+<li>-k 指定哪一个字段</li>
+<li>-u 排序后相同的行只显示一次(相邻且完全一致的行才是重复行)</li>
+<li>-f 排序时忽略字符大小写<br>  uniq 找到重复的行</li>
+<li>-c 显示文件中行重复的次数</li>
+<li>-d 只显示重复的行</li>
+</ol>
+</li>
+<li>文本统计 wc（word count) 行数（-l） 单词数 字节数</li>
+<li>字符处理 tr</li>
+</ul>
+</li>
+</ol>
+<h2 id="BASH"><a href="#BASH" class="headerlink" title="BASH"></a>BASH</h2><h3 id="命令行编辑"><a href="#命令行编辑" class="headerlink" title="命令行编辑"></a>命令行编辑</h3><h4 id="光标跳转"><a href="#光标跳转" class="headerlink" title="光标跳转:"></a>光标跳转:</h4><ol>
+<li>ctrl+a 跳到命令行首</li>
+<li>ctrl+e 调到命令行尾</li>
+<li>ctrl+u 删除光标至命令行首的内容</li>
+<li>ctrl+k 删除光标至命令行尾的内容</li>
+<li>ctrl+l 清屏</li>
+</ol>
+<h3 id="命令历史"><a href="#命令历史" class="headerlink" title="命令历史"></a>命令历史</h3><h4 id="查看命令历史"><a href="#查看命令历史" class="headerlink" title="查看命令历史"></a>查看命令历史</h4><blockquote>
+<p>history</p>
+</blockquote>
+<p>-c: 清空命令历史</p>
+<h4 id="命令历史的使用技巧"><a href="#命令历史的使用技巧" class="headerlink" title="命令历史的使用技巧"></a>命令历史的使用技巧</h4><ol>
+<li>！！上一次执行的命令</li>
+<li>！string 最近一次以string开头的命令</li>
+<li>！$ 可以应用上一个命令最后一个参数,也可以按下esc，再按.</li>
+</ol>
+<h3 id="命令补全"><a href="#命令补全" class="headerlink" title="命令补全"></a>命令补全</h3><p><strong>两下tab</strong> 查询所有以输入开头的命令或路径</p>
+<h3 id="命令别名"><a href="#命令别名" class="headerlink" title="命令别名"></a>命令别名</h3><blockquote>
+<p>alias aliasCMD=CMD</p>
+</blockquote>
+<p>如果有空格要加引号<br>定义的别名只在当前shell的生命周期中有效<br>撤销别名 unalias</p>
+<h3 id="命令替换"><a href="#命令替换" class="headerlink" title="命令替换"></a>命令替换</h3><p>$(COMMAND) 反引号COMMAND反引号<br>touch file_$(date +%F-%H-%M-%S).txt<br>bash支持的引号：</p>
+<ul>
+<li>反引号：命令替换</li>
+<li>“”: 弱引用，可以实现变量替换</li>
+<li>‘’: 强引用，不完成变量替换</li>
+</ul>
+<h3 id="文件名通配"><a href="#文件名通配" class="headerlink" title="文件名通配"></a>文件名通配</h3><ol>
+<li>“ * ” ： 匹配任意长度的任意字符</li>
+<li>? : 匹配任意单个字符</li>
+<li>[]: 匹配指定范围内的任意单个字符<br>[abc],[a-m],[a-z],[A-Z],[0-9],[a-zA-Z]</li>
+<li>“[^]” : 匹配指定范围之外的任意单个字符</li>
+<li>man 7 glob 某一类 空格[:space:] 标点符号 [:punct:]<br>小写字母 [:lower:] 大写字母 [:upper:] 大小写字母[:alpha:]<br>数字[:digit:] 数字和大小写字母[:alnum:] </li>
+</ol>
+<h2 id="用户-组-权限"><a href="#用户-组-权限" class="headerlink" title="用户 组 权限"></a>用户 组 权限</h2><h3 id="文件："><a href="#文件：" class="headerlink" title="文件："></a>文件：</h3><ul>
+<li>r:可读，可以使用类似cat命令查看文件内容；</li>
+<li>w:可写，可以编辑或删除此文件；</li>
+<li>x:可执行，可以在命令提示符下当做命令提交给内核运行</li>
+</ul>
+<h3 id="目录："><a href="#目录：" class="headerlink" title="目录："></a>目录：</h3><ul>
+<li>r: 可以对此目录执行ls以列出内部的所有文件</li>
+<li>w: 可以在此目录创建文件</li>
+<li>x: 可以使用cd切换进此目录，也可以使用ls -l查看详细信息</li>
+</ul>
+<h3 id="etc-passwd"><a href="#etc-passwd" class="headerlink" title="/etc/passwd"></a>/etc/passwd</h3><ol>
+<li>account: 登录名</li>
+<li>password: 密码</li>
+<li>UID</li>
+<li>GID: 基本组ID</li>
+<li>comment: 注释</li>
+<li>HOME DIR</li>
+<li>SHELL：用户的默认shell</li>
+</ol>
+<h3 id="etc-shadow"><a href="#etc-shadow" class="headerlink" title="/etc/shadow"></a>/etc/shadow</h3><ol>
+<li>account: 登录名</li>
+<li>encrypted password: 加密的密码 !!表示锁定</li>
+<li>最近一次修改密码的时间</li>
+<li>最短的使用期限</li>
+<li>最长的使用期限</li>
+<li>警告时间</li>
+</ol>
+<h3 id="etc-group"><a href="#etc-group" class="headerlink" title="/etc/group"></a>/etc/group</h3><ol>
+<li>组名</li>
+<li>密码</li>
+<li>GID</li>
+<li>以此组为附加组的用户列表</li>
+</ol>
+<h3 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h3><h4 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h4><blockquote>
+<p>useradd [options] USERNAME</p>
+</blockquote>
+<ul>
+<li><p>-u 指定UID UID必须不能重复并且&gt;=500</p>
+</li>
+<li><p>-g GID 基本组</p>
+</li>
+<li><p>-G GID,…（附加组 ）</p>
+</li>
+<li><p>-c “COMMENT”</p>
+</li>
+<li><p>-d /path/to/somedir 指定家目录</p>
+<blockquote>
+<p>useradd -c “Tony Blare” -d /home/blare use4 </p>
+</blockquote>
+</li>
+<li><p>-s 指定当前系统可用的安全shell 在/etc/shells中</p>
+</li>
+<li><p>-M 创建用户 但不创建家目录</p>
+</li>
+<li><p>-r 添加一个系统用户（系统用户不能登录系统 没有家目录）</p>
+</li>
+</ul>
+<h4 id="查询用户ID"><a href="#查询用户ID" class="headerlink" title="查询用户ID"></a>查询用户ID</h4><blockquote>
+<p>id USERNAME(显示用户的UID和组ID) </p>
+</blockquote>
+<ul>
+<li>-u </li>
+<li>-g</li>
+<li>-G</li>
+<li>-n 显示名称而非ID号 </li>
+</ul>
+<h4 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h4><blockquote>
+<p>userdel [option] USERNAME</p>
+</blockquote>
+<ul>
+<li>默认不删除用户家目录</li>
+<li>-r 删除家目录 </li>
+</ul>
+<h4 id="修改用户账号属性"><a href="#修改用户账号属性" class="headerlink" title="修改用户账号属性"></a>修改用户账号属性</h4><blockquote>
+<p>usermod</p>
+</blockquote>
+<ul>
+<li>-u UID</li>
+<li>-g GID(基本组)</li>
+<li>-G GID(附加组)  -a -G 为用户追加附加组</li>
+<li>-c 注释</li>
+<li>-d -m: 一起用 换家目录 并把此前家目录的文件移动到新的目录</li>
+<li>-l 修改用户名</li>
+</ul>
+<h4 id="修改用户shell"><a href="#修改用户shell" class="headerlink" title="修改用户shell"></a>修改用户shell</h4><blockquote>
+<p>chsh</p>
+</blockquote>
+<h4 id="修改或设置密码"><a href="#修改或设置密码" class="headerlink" title="修改或设置密码"></a>修改或设置密码</h4><blockquote>
+<p>passwd [USERNAME]</p>
+</blockquote>
+<ul>
+<li>–stdin 标准输入 echo “redhad” | passwd –stdin user4 </li>
+<li>-l lock</li>
+<li>-u unlock</li>
+<li>-d 删除用户密码</li>
+</ul>
+<h4 id="检查用户帐号的完整性"><a href="#检查用户帐号的完整性" class="headerlink" title="检查用户帐号的完整性"></a>检查用户帐号的完整性</h4><blockquote>
+<p>pwck</p>
+</blockquote>
+<h4 id="组管理"><a href="#组管理" class="headerlink" title="组管理"></a>组管理</h4><ul>
+<li>创建组 groupadd<ul>
+<li>-g 指定GID</li>
+<li>-r 添加一个系统组</li>
+<li>-m 修改组名</li>
+</ul>
+</li>
+<li>删除组 groupdel<ul>
+<li>newgrp GRPNAME 切换到新的组登录 退出 exit</li>
+<li>gpasswd 为组设定密码</li>
+</ul>
+</li>
+</ul>
+<h4 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h4><ul>
+<li>chown 改变文件owner (<strong>只有管理员才可以使用此命令</strong>)<ul>
+<li>-R 修改目录及其内部文件的owner</li>
+<li>–reference=/path/to/somefile FILE(属主 属组都改 )</li>
+<li>chown USERNAME:GRPNAME FILE</li>
+</ul>
+</li>
+<li>chgrp (<strong>只有管理员才能使用此命令</strong>)  </li>
+<li>修改文件的权限 chmod<ul>
+<li>修改三类用户的权限：chmod MODE file<ul>
+<li>-R</li>
+<li>–reference=path FILE </li>
+</ul>
+</li>
+<li>修改某类用户的权限<ul>
+<li>u,g,o,a  chmod 用户类别=mod FILE</li>
+</ul>
+</li>
+<li>修改某类用户的某些权限<ul>
+<li>u,g,o,a  chmod 用户类别 +|- mod FILE</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>umask 遮罩码：创建文件用666-遮罩码 创建目录用777-遮罩码 </li>
+</ul>
+<h4 id="shell的类型"><a href="#shell的类型" class="headerlink" title="shell的类型"></a>shell的类型</h4><ul>
+<li>登录式shell: <ul>
+<li>su -USERNAME</li>
+<li>su -l USERNAME</li>
+</ul>
+</li>
+<li>非登录式shell:<ul>
+<li>su USERNAME</li>
+<li>图形终端下打开命令窗口</li>
+<li>自动执行的shell脚本</li>
+</ul>
+</li>
+</ul>
+<h4 id="bash的配置文件"><a href="#bash的配置文件" class="headerlink" title="bash的配置文件"></a>bash的配置文件</h4><ul>
+<li>全局配置： /etc/profile, /etc/profile.d/*.sh, /etc/bashrc</li>
+<li>个人配置：~/.bash_profile, ~/.bashrc</li>
+<li>profile类文件： <ul>
+<li>设定环境变量</li>
+<li>运行命令或脚本</li>
+</ul>
+</li>
+<li>bashrc类文件：<ul>
+<li>设定本地变量</li>
+<li>定义命令别名</li>
+</ul>
+</li>
+<li>登录式shell如何读取配置文件？<ul>
+<li>/etc/profile –&gt; /etc/profile.d/*.sh –&gt; ~/.bash_profile –&gt; ~/.bashrc –&gt; /etc/bashrc</li>
+</ul>
+</li>
+<li>非登录式shell如何读取配置文件？<ul>
+<li>~/.bashrc –&gt; /etc/bashrc –&gt; /etc/profile.d/*.sh  </li>
+</ul>
+</li>
+</ul>
+<h4 id="文件的隐藏属性"><a href="#文件的隐藏属性" class="headerlink" title="文件的隐藏属性"></a>文件的隐藏属性</h4><ul>
+<li>chattr +i DIR/FILE 给文件增加隐藏属性  任何人不能删除、修改文件</li>
+<li>chattr -i DIR/FILE 去掉隐藏属性</li>
+<li>chattr +a DIR/FILE 任何人只能增加数据，不能删除或者修改数据</li>
+<li>chattr -a DIR/FILE 去掉隐藏属性</li>
+<li>lsattr 查看目录/文件的隐藏属性</li>
+</ul>
+<h2 id="I-O"><a href="#I-O" class="headerlink" title="I/O"></a>I/O</h2><h3 id="系统设定"><a href="#系统设定" class="headerlink" title="系统设定"></a>系统设定</h3><ul>
+<li>默认输出设备：标准输出，STDOUT,1,键盘</li>
+<li>默认输入设备：标准输入，STDIN,0,显示器</li>
+<li>标准错误输出：STDRR,2,显示器</li>
+</ul>
+<h3 id="I-O-重定向"><a href="#I-O-重定向" class="headerlink" title="I/O 重定向"></a>I/O 重定向</h3><ul>
+<li>&gt; 输出重定向：覆盖输出</li>
+<li>&gt;&gt;: 追加输出</li>
+<li>set -C: 禁止对已经存在的文件使用覆盖重定向</li>
+<li>set +C: 关闭上述功能</li>
+<li>如果要强制覆盖 使用 &gt;|</li>
+<li>2&gt;: 重定向错误输出</li>
+<li>2&gt;&gt;: 追加错误输出</li>
+<li>&amp;&gt;: 重定向标准输出和错误输出至同一个文件  </li>
+<li>&lt; 输入重定向 </li>
+<li>&lt;&lt;: HERE DOCUMENT</li>
+<li>管道：前一个命令的输出，作为后一个命令的输入<ul>
+<li>命令1| 命令2|命令3 …  </li>
+<li>tee 在屏幕上输出， 并且将数据输入到指定文件中</li>
+</ul>
+</li>
+</ul>
+<h2 id="文本查找"><a href="#文本查找" class="headerlink" title="文本查找"></a>文本查找</h2><h3 id="grep-根据模式搜索文本，并将符合模式的文本行显示出来"><a href="#grep-根据模式搜索文本，并将符合模式的文本行显示出来" class="headerlink" title="grep: 根据模式搜索文本，并将符合模式的文本行显示出来"></a>grep: 根据模式搜索文本，并将符合模式的文本行显示出来</h3><blockquote>
+<p>grep + [OPTION] + PATTERN + FILE </p>
+</blockquote>
+<ul>
+<li>PATTERN 文本字符和正则表达式元字符组合而成匹配条件  </li>
+<li>-i 忽略字符大小写</li>
+<li>–color 匹配到的字符加高亮</li>
+<li>-v 被模式匹配到的行不显示 没被匹配到的显示</li>
+<li>-o 只显示被模式匹配到的字符串</li>
+<li>-A + N  连同查到的行前面N行一起显示</li>
+<li>-B + N  连同查到的行后面N行一起显示</li>
+<li>-C + N  连同查到的行前面与后面N行一起显示</li>
+<li>-E 扩展正则表达式 egrep<ul>
+<li>不用 <code>\</code></li>
+<li>可以用 | 表示“或”， 用（）定义或的范围 </li>
+</ul>
+</li>
+</ul>
+<h3 id="正则表达式：REGULAR-EXPRESSION-REGEXP"><a href="#正则表达式：REGULAR-EXPRESSION-REGEXP" class="headerlink" title="正则表达式：REGULAR EXPRESSION, REGEXP"></a>正则表达式：REGULAR EXPRESSION, REGEXP</h3><ul>
+<li>元字符<ul>
+<li>. 表示任意单个字符</li>
+<li>[]匹配指定范围内的任意单个字符</li>
+<li>[<code>^</code>] 匹配指定范围外的单个字符</li>
+</ul>
+</li>
+<li>匹配次数 <ul>
+<li>* 匹配其前面的字符任意次</li>
+<li>.* 任意长度的任意字符</li>
+<li>\？ 匹配其前面的字符1次或0次（前面的字符可有可无）  </li>
+<li>\{m,n\} 匹配器前面的字符至少m次，至多n次</li>
+</ul>
+</li>
+<li>位置锚定：<ul>
+<li>^: 此字符后面的任意内容必须出现在行首</li>
+<li>$: 此字符前面的任意内容必须出现在行尾</li>
+<li>^$: 空白行 </li>
+<li>\&lt;: 其后面的任意字符必须作为单词首部出现</li>
+<li>\&gt;: 其前面的任意字符必须作为单词尾部出现</li>
+</ul>
+</li>
+<li>分组<ul>
+<li><code>\(\)</code>,比如<code>\(ab\)</code> </li>
+<li>后向引用<ul>
+<li>\1：重复第一个左括号与其对应的右括号之间的内容</li>
+<li>\2：重复第二个左括号与其对应的右括号之间的内容</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="脚本编程"><a href="#脚本编程" class="headerlink" title="脚本编程"></a>脚本编程</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><ol>
+<li><p>本地变量赋值</p>
+<blockquote>
+<p>NAME=VAR 整个bash进程都可用</p>
+</blockquote>
+</li>
+<li><p>局部变量：local VARNAME=VALUE 作用域为当前代码段 </p>
+</li>
+<li><p>环境变量：作用域为当前shell进程及其子进程</p>
+<ul>
+<li>export VARNAME=VALUE  也称为“导出“</li>
+<li>或者 先定义 VARNAME=VALUE 再导出 export VARNAME</li>
+</ul>
+</li>
+<li><p>位置变量</p>
+<ul>
+<li>$1（脚本的第一个参数）</li>
+<li>$2（脚本的第二个参数）</li>
+<li>shift [n]</li>
+</ul>
+</li>
+<li><p>特殊变量：</p>
+<ul>
+<li><p>$?: 上一个命令的执行状态返回值； </p>
+<ul>
+<li>程序执行，可能有两类返回值：<ul>
+<li>程序执行结果</li>
+<li>程序状态返回代码（0-255）<ul>
+<li>0 ：正确执行</li>
+<li>1-255：错误执行，1，2，127，系统预留，有特殊意义</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>$#: 参数的个数</li>
+<li>$*: 参数列表</li>
+<li>$@: 参数列表   </li>
+</ul>
+<p>任何脚本在执行时会启动一个子shell进程 </p>
+<p>命令行中启动的脚本会继承当前shell环境变量</p>
+<p>系统自动执行的脚本（非命令行启动）就需要自我定义需要的各环境变量    </p>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="6">
+<li><p>引用变量：${VAR} 有时{}可以省略</p>
+</li>
+<li><p>撤销变量</p>
+<blockquote>
+<p>unset VARNAME</p>
+</blockquote>
+</li>
+<li><p>查看当前shell中的变量</p>
+<blockquote>
+<p>set</p>
+</blockquote>
+</li>
+<li><p>查看当前shell中的环境变量</p>
+<ul>
+<li>printenv</li>
+<li>env</li>
+<li>export</li>
+</ul>
+</li>
+<li><p>可以用<code>:</code>在变量的前后追加字符串</p>
+</li>
+<li><p>默认变量为字符串</p>
+</li>
+</ol>
+<h3 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h3><ul>
+<li>命令的堆砌，按实际需要，结合命令流程控制</li>
+<li>shebang:魔数</li>
+<li>#!/bin/bash</li>
+<li># 注释行，不执行  </li>
+</ul>
+<h3 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h3><h4 id="条件测试类型"><a href="#条件测试类型" class="headerlink" title="条件测试类型"></a>条件测试类型</h4><ul>
+<li>整数测试</li>
+<li>字符测试</li>
+<li>文件测试</li>
+</ul>
+<h4 id="条件测试的表达式"><a href="#条件测试的表达式" class="headerlink" title="条件测试的表达式"></a>条件测试的表达式</h4><ul>
+<li>[ expression ]</li>
+<li>[[ expression ]]</li>
+<li>text expression</li>
+</ul>
+<h4 id="整数测试："><a href="#整数测试：" class="headerlink" title="整数测试："></a>整数测试：</h4><ul>
+<li>-eq 测试两个整数是否相等： 比如 $A -eq $B</li>
+<li>-ne 测试两个整数是否不等</li>
+<li>-gt 测试一个数是否大于另一个数</li>
+<li>-lt 测试一个数是否小于另一个数</li>
+<li>-ge 大于或等于</li>
+<li>-le 小于或等于</li>
+</ul>
+<h4 id="命令的逻辑关系"><a href="#命令的逻辑关系" class="headerlink" title="命令的逻辑关系"></a>命令的逻辑关系</h4><ul>
+<li><p>逻辑与：&amp;&amp;</p>
+<ol>
+<li>第一个条件为假时，第二条件不用再判断 </li>
+<li>第一个条件为真时，第二条件必须得判断</li>
+</ol>
+</li>
+<li><p>逻辑或：||</p>
+</li>
+</ul>
+<ol>
+<li><p>如果user6不存在，就添加user6</p>
+<blockquote>
+<p>! id user6 &amp;&amp; useradd user6<br>id user6 || useradd user6</p>
+</blockquote>
+</li>
+<li><p>如果/etc/inittab文件的行数大于100，就显示好大的文件</p>
+<blockquote>
+<p>[ `wc -l /etc/inittab | cut -d ‘ ‘ -f1` -lt 100 ] &amp;&amp; echo “small file”</p>
+</blockquote>
+<p>   或者</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">LINES&#x3D; \&#96;wc -l &#x2F;etc&#x2F;inittab\&#96;</span><br><span class="line">echo $LINES</span><br><span class="line">FINELINES &#x3D; &#96;echo $LINES | cut -d &#39; &#39; -f1\&#96;</span><br><span class="line">echo $FINELINES</span><br><span class="line">[ $FINELINES -gt 100] &amp;&amp; echo &quot;this is a big file&quot; || echo &quot;this is a small file&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果用户存在，就显示用户已存在，否则，就添加此用户</p>
+<blockquote>
+<p>id user1 &amp;&amp; echo “user exists.” || useradd user1 </p>
+</blockquote>
+</li>
+<li><p>如果用户不存在，就添加，否则，显示其已经存在</p>
+<blockquote>
+<p>id user1 &amp;&amp; useradd user1 || echo “user1 exist”</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="条件判断，控制结构"><a href="#条件判断，控制结构" class="headerlink" title="条件判断，控制结构"></a>条件判断，控制结构</h4><ul>
+<li><p>单分支if语句</p>
+<blockquote>
+<p>if 判断条件;then<br>statement1<br>statement2<br>…<br>fi</p>
+</blockquote>
+</li>
+<li><p>双分支if语句</p>
+<blockquote>
+<p>if 判断条件;then<br>statement1<br>statement2<br>…<br>else<br>statement3<br>statement4<br>…<br>fi    </p>
+</blockquote>
+</li>
+<li><p>多分支的if语句</p>
+<blockquote>
+<p>if 判断条件1；then</p>
+<pre><code>statement1</code></pre><p>  …<br>elif 判断条件2；then<br>   statement2<br>   …<br>elif 判断条件3; then<br>   statement3<br>   …<br>else 判断条件4; then</p>
+<pre><code>statement4</code></pre></blockquote>
+</li>
+</ul>
+<h4 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">case 变量 in </span><br><span class="line">value1)</span><br><span class="line">  statement</span><br><span class="line">  ...</span><br><span class="line">  ;;</span><br><span class="line">value2)</span><br><span class="line">  statement</span><br><span class="line">  ...</span><br><span class="line">  ;;;</span><br><span class="line">*) </span><br><span class="line">  statement</span><br><span class="line">  ...</span><br><span class="line">  ;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="退出脚本"><a href="#退出脚本" class="headerlink" title="退出脚本"></a>退出脚本</h4><p>定义脚本退出状态码</p>
+<blockquote>
+<p>exit #</p>
+</blockquote>
+<p>如果脚本没有明确定义退出状态码，那么，最后执行的一条命令的退出码即为脚本的退出状态码</p>
+<h4 id="shell-中如何进行算术运算：A-3-B-6"><a href="#shell-中如何进行算术运算：A-3-B-6" class="headerlink" title="shell 中如何进行算术运算：A=3 B=6"></a>shell 中如何进行算术运算：A=3 B=6</h4><ol>
+<li>let C=$A+$B</li>
+<li>C=$[$A+$B]</li>
+<li>C=$(($A+$B))          </li>
+<li>C=`expr $A + $B`(表达式中各操作数及运算符之间要有空格) </li>
+</ol>
+<h4 id="文件测试"><a href="#文件测试" class="headerlink" title="文件测试"></a>文件测试</h4><ul>
+<li>-e FILE: 测试文件是否存在 [ -e /etc/inittab ]</li>
+<li>-f FILE: 测试文件是否为普通文件</li>
+<li>-d FILE: 测试指定路径是否为目录</li>
+<li>-r  -w -x  FILE: 测试当前用户对指定文件是否有读写执行权限</li>
+</ul>
+<h4 id="字符测试"><a href="#字符测试" class="headerlink" title="字符测试"></a>字符测试</h4><ul>
+<li>== 或一个 = [ $A == $B ] <strong>等号两端要有空格</strong></li>
+<li>!=: 测试是否不等，不等为真 等为假</li>
+<li><blockquote>
+</blockquote>
+</li>
+<li>&lt;</li>
+<li>-n VAR：测试指定字符串是否为空，空为真，不空为假</li>
+<li>-z VAR：测试指定字符串是否不为空，不空为真，空为假</li>
+</ul>
+<h4 id="测试脚本是否有语法错误"><a href="#测试脚本是否有语法错误" class="headerlink" title="测试脚本是否有语法错误"></a>测试脚本是否有语法错误</h4><blockquote>
+<p>bash -n FILE</p>
+</blockquote>
+<h4 id="执行并逐步查看脚本"><a href="#执行并逐步查看脚本" class="headerlink" title="执行并逐步查看脚本"></a>执行并逐步查看脚本</h4><blockquote>
+<p>bash -x FILE</p>
+</blockquote>
+<h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h3><ul>
+<li><p>for</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for 变量 in 列表；do</span><br><span class="line">循环体</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>生成列表的方法</p>
+<ul>
+<li>{1..100}</li>
+<li>seq 起始数 步进长度 结束数；用命令替换在for中生成列表</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#39;	#!&#x2F;bin&#x2F;bash</span><br><span class="line">	declare -i SUM&#x3D;0</span><br><span class="line">	for I in &#123;1..100&#125;; do</span><br><span class="line">	let SUM&#x3D;$[$SUM+$I]</span><br><span class="line">	done</span><br><span class="line">	echo &quot;The sum is: $SUM&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>while</p>
+</li>
+<li><p>until</p>
+</li>
+</ul>
+<h3 id="组合测试条件"><a href="#组合测试条件" class="headerlink" title="组合测试条件"></a>组合测试条件</h3><ul>
+<li>-a : 与关系</li>
+<li>-o : 或关系</li>
+<li>！: 非关系</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if [ $# -gt 1 -a $# -le 3 ]</span><br><span class="line">if [ $# -gt 1 ] &amp;&amp; [ $# -le 3 ]</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h2><h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><ul>
+<li><p>sed: Stream EDiter 行编辑器 </p>
+</li>
+<li><p>默认不编辑源文件，仅对模式空间内的文本进行处理（源文件的副本，而后将模式空间打印出来</p>
+<blockquote>
+<p>sed [options] ‘AddressCommand’ file …</p>
+</blockquote>
+</li>
+<li><p>Address</p>
+<ol>
+<li><p>StartLine,Endline；<br>比如1，100；<br>$: 最后一行；</p>
+</li>
+<li><p>/RegExp/</p>
+<blockquote>
+<p> /^root/</p>
+</blockquote>
+</li>
+<li><p>/pattern1/ , /pattern2/</p>
+<pre><code>第一次被pattern1匹配的行开始，至第一次被pattern2匹配到的行</code></pre></li>
+<li><p>linenumber</p>
+<pre><code>指定的行</code></pre></li>
+<li><p>StartLine +N</p>
+<pre><code>从startline开始，向后的N行</code></pre></li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><p>Command</p>
+<ul>
+<li><p>d 删除符合条件的行  sed ‘1,2d’ /etc/fstab 删除 /etc/fstab 的前两行</p>
+</li>
+<li><p>p 显示符合条件的行  </p>
+</li>
+<li><p>a \“string” : 在指定的行后面追加新行</p>
+</li>
+<li><p>i \“string” : 在指定的行前面添加新行</p>
+</li>
+<li><p>r FILE: 将指定的文件和内容添加至符合条件的行处</p>
+</li>
+<li><p>w FILE: 将地址指定范围内的内容另存至指定的文件中</p>
+</li>
+<li><p>s/pattern/string/修饰符:  查找并替换, 默认只替换每行中第一次被模式匹配到的字符串。</p>
+<blockquote>
+<p>sed ‘1,2s/^/#/g’ /etc/fstab 把文件中1、2行的所有/都替换成#</p>
+</blockquote>
+<ul>
+<li>修饰符<ul>
+<li>g: 全局替换</li>
+<li>i: 查找时忽略字符大小写<ul>
+<li>&amp; 泛指查找到的内容（字符串中有模糊的数据）</li>
+<li>s/// 也中的/ 也可用其他字符替换，比如### @@@</li>
+<li>s/// 支持 后项匹配 \1 \2</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>options</p>
+<ul>
+<li>-n 不再显示模式空间中的内容          </li>
+<li>-i 直接修改源文件</li>
+<li>-e SCRIPT -e SCRIPT : 可以同时执行多个脚本</li>
+<li>-f /PATH/TO/SED_SCRIPT FILE : 把SED_SCRIPT中的脚本全部应用在FILE中</li>
+<li>-r 表示使用扩展RegEXPR <blockquote>
+<p>history | sed -r ‘s#^[[:space:]]+*##g’ 把history行首的空格删除</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><blockquote>
+<p>vim /path/to/somefile</p>
+</blockquote>
+<h3 id="vim的模式"><a href="#vim的模式" class="headerlink" title="vim的模式"></a>vim的模式</h3><ul>
+<li>编辑模式（命令模式）默认处于编辑模式</li>
+<li>输入模式 </li>
+<li>末行模式</li>
+</ul>
+<h3 id="模式转换"><a href="#模式转换" class="headerlink" title="模式转换"></a>模式转换</h3><ul>
+<li>编辑–&gt;输入：<ul>
+<li>i : 在当前光标所在字符的前面，转化为输入模式</li>
+<li>a : 在当前光标所在字符的后面</li>
+<li>o : 在当前光标所在行的下方新建一行</li>
+<li>I : 在当前光标所在行的行首，转化为输入模式</li>
+<li>A : 行尾</li>
+<li>O : 所在行的上方，新建一行</li>
+</ul>
+</li>
+<li>输入–&gt;编辑：<ul>
+<li>esc</li>
+</ul>
+</li>
+<li>编辑–&gt;末行<ul>
+<li>：</li>
+</ul>
+</li>
+<li>末行–&gt;编辑：<ul>
+<li>esc      </li>
+</ul>
+</li>
+</ul>
+<h3 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h3><ul>
+<li>vim +n file： 打开文件，并定位于第n行</li>
+<li>vim +: 打开文件，定位于最后一行</li>
+<li>vim + /pattern : 打开文件，定位至第一次被PATTERN匹配到的行的行首</li>
+</ul>
+<h3 id="关闭文件"><a href="#关闭文件" class="headerlink" title="关闭文件"></a>关闭文件</h3><ul>
+<li>末行模式关闭文件<ul>
+<li>:q  退出</li>
+<li>:wq 保存退出</li>
+<li>:!q 不保存并退出</li>
+<li>:w  保存</li>
+<li>:w! 强行保存</li>
+<li>:ADDR1,ADDR2w /path/to/file 将文件的某些行保存到某个文件中去</li>
+<li>:r /path/to/somewhere 在当前光标所在行的下方把别的文件添加进来</li>
+<li>:qa 退出所有文件</li>
+</ul>
+</li>
+<li>编辑模式下退出<ul>
+<li>ZZ</li>
+</ul>
+</li>
+</ul>
+<h3 id="移动光标（编辑模式）"><a href="#移动光标（编辑模式）" class="headerlink" title="移动光标（编辑模式）"></a>移动光标（编辑模式）</h3><h4 id="逐字符移动"><a href="#逐字符移动" class="headerlink" title="逐字符移动"></a>逐字符移动</h4><ul>
+<li>h ：左</li>
+<li>l : 右</li>
+<li>j ：下</li>
+<li>k : 上</li>
+<li>n+方向键： 移动n个字符</li>
+</ul>
+<h4 id="逐单词移动"><a href="#逐单词移动" class="headerlink" title="逐单词移动"></a>逐单词移动</h4><ul>
+<li>w: 移动至下一个单词的次首</li>
+<li>e: 移至当前或者下一个单词词尾</li>
+<li>b: 跳到当前或前一个单词的词首</li>
+<li>都可以和数字组合</li>
+</ul>
+<h4 id="行内跳转"><a href="#行内跳转" class="headerlink" title="行内跳转"></a>行内跳转</h4><ul>
+<li>0：跳到行首</li>
+<li>^: 也表示跳到行首, 但是第一个非空字符，绝对行首</li>
+<li>$: 绝对行尾</li>
+</ul>
+<h4 id="行间跳转"><a href="#行间跳转" class="headerlink" title="行间跳转"></a>行间跳转</h4><ul>
+<li>n+G: 直接跳转至第n行</li>
+<li>G: 最后一行</li>
+<li>末行模式下，直接给出行号即可</li>
+</ul>
+<h4 id="翻屏"><a href="#翻屏" class="headerlink" title="翻屏"></a>翻屏</h4><ul>
+<li>ctrl+f：向下翻一屏</li>
+<li>ctrl+b: 向上翻一屏</li>
+<li>ctrl+d: 向下翻半屏</li>
+<li>ctrl+u: 向上翻半屏</li>
+</ul>
+<h3 id="操作文本"><a href="#操作文本" class="headerlink" title="操作文本"></a>操作文本</h3><h4 id="删除单个字符"><a href="#删除单个字符" class="headerlink" title="删除单个字符"></a>删除单个字符</h4><ul>
+<li>x : 删除光标所在处的单个字符</li>
+<li>n+x: 删除光标向后n个字符</li>
+</ul>
+<h4 id="删除命令"><a href="#删除命令" class="headerlink" title="删除命令"></a>删除命令</h4><ul>
+<li>d + 和跳转命令组合使用：指定删除多少</li>
+<li>n+d+跳转符：ndw,nde,ndb</li>
+<li>dd 删除光标所在行</li>
+<li>n+dd 或 D 删除包括当前光标所在内的n行</li>
+<li>末行模式下：startADD,endADDd<ul>
+<li>. 表示当前行</li>
+<li>$ 最后一行</li>
+<li>+n: 向下n行</li>
+</ul>
+</li>
+</ul>
+<h4 id="粘贴命令"><a href="#粘贴命令" class="headerlink" title="粘贴命令"></a>粘贴命令</h4><ul>
+<li>p: 如果删除或复制为整行内容，则粘贴至光标所在行的下方，如果是非整行，则粘贴内容至光标后面</li>
+<li>P（大写） ： 前面</li>
+</ul>
+<h4 id="复制命令"><a href="#复制命令" class="headerlink" title="复制命令"></a>复制命令</h4><ul>
+<li>y: 用法和d 相同</li>
+</ul>
+<h4 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h4><ul>
+<li>c: 先删除内容，再转换为输入模式，用法和d相同</li>
+</ul>
+<h4 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h4><ul>
+<li>r: 替换单个字符</li>
+<li>R：直接转换为替换模式</li>
+</ul>
+<h4 id="撤销编辑操作"><a href="#撤销编辑操作" class="headerlink" title="撤销编辑操作"></a>撤销编辑操作</h4><ul>
+<li>u(undo) 可连续使用，一般缓存只保存最近50次的操作</li>
+<li>n + u </li>
+</ul>
+<h4 id="还原撤销操作"><a href="#还原撤销操作" class="headerlink" title="还原撤销操作"></a>还原撤销操作</h4><ul>
+<li>ctrl + r</li>
+</ul>
+<h4 id="重复此前的操作"><a href="#重复此前的操作" class="headerlink" title="重复此前的操作"></a>重复此前的操作</h4><ul>
+<li>.</li>
+</ul>
+<h4 id="可视化模式"><a href="#可视化模式" class="headerlink" title="可视化模式"></a>可视化模式</h4><ul>
+<li>v 按字符选取</li>
+<li>V 按矩形选取</li>
+</ul>
+<h4 id="查找替换"><a href="#查找替换" class="headerlink" title="查找替换"></a>查找替换</h4><ul>
+<li><p>/PATTERN 从当前光标所在处，往下去找</p>
+</li>
+<li><p>?PATTERN 从当前光标所在处，往上去找</p>
+</li>
+<li><p>n N找下一个</p>
+</li>
+<li><p>替换: 在末行模式下使用s命令， 用法和sed一样</p>
+<blockquote>
+<p>ADDR1,ADDR2s@PATTERN@string@gi</p>
+</blockquote>
+<ul>
+<li>1,$或者%：表示全文查找并替换</li>
+</ul>
+</li>
+</ul>
+<h3 id="打开多个文件"><a href="#打开多个文件" class="headerlink" title="打开多个文件"></a>打开多个文件</h3><blockquote>
+<p>vim FILE1 FILE2</p>
+</blockquote>
+<ul>
+<li>文件间切换<ul>
+<li>切换到下一个 末行模式 next</li>
+<li>切换到上一个 末行模式 prev </li>
+<li>切换至最后一个文件 last</li>
+<li>切换至第一个文件 first</li>
+</ul>
+</li>
+<li>分窗口显示多个文件<ul>
+<li>vim -o : 水平分割</li>
+<li>vim -O : 垂直分割</li>
+</ul>
+</li>
+</ul>
+<h3 id="分屏显示文件"><a href="#分屏显示文件" class="headerlink" title="分屏显示文件"></a>分屏显示文件</h3><ul>
+<li>Ctrl+w, s: 水平拆分窗口</li>
+<li>Ctrl+w, v: 垂直拆分窗口</li>
+<li>在窗口间切换光标： Ctrl+w,ARROW</li>
+</ul>
+<h3 id="跟shell交互"><a href="#跟shell交互" class="headerlink" title="跟shell交互"></a>跟shell交互</h3><p>:!COMMAND</p>
+<h3 id="高级话题"><a href="#高级话题" class="headerlink" title="高级话题"></a>高级话题</h3><ul>
+<li>:set nu  显示行号</li>
+<li>:set nonu 取消显示行号</li>
+<li>:set ai 设定自动缩进</li>
+<li>:set noai 取消自动缩进</li>
+<li>:set hlsearch 高亮显示搜索到的文本</li>
+<li>:set nohlsearch 取消高亮显示搜索到的文本</li>
+<li>:syntax on 开启语法着色</li>
+<li>:syntax off 关闭语法着色</li>
+</ul>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><ul>
+<li>/etc/vimrc </li>
+<li>个人配置文件 家目录/.vimrc</li>
+</ul>
+<h3 id="vim教程"><a href="#vim教程" class="headerlink" title="vim教程"></a>vim教程</h3><blockquote>
+<p>vimtutor </p>
+</blockquote>
+<h2 id="文件查找"><a href="#文件查找" class="headerlink" title="文件查找"></a>文件查找</h2><h3 id="locate"><a href="#locate" class="headerlink" title="locate"></a>locate</h3><ul>
+<li>非实时，模糊匹配，查找是根据全系统文件数据库进行的 </li>
+<li>updatedb 手动生成文件数据库</li>
+<li>速度快</li>
+</ul>
+<h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><ul>
+<li>实时 精确 遍历指定目录中的所有文件完成查找 速度慢 支持多种查找标准<blockquote>
+<p>find 查找路径 查找标准 查找到以后的处理动作</p>
+</blockquote>
+</li>
+<li>查找路径： 默认为当前目录</li>
+<li>查找标准： 默认为指定路径下的所有文件</li>
+<li>处理动作： 默认为打印</li>
+<li>匹配标准<ul>
+<li>-name ‘FILENAME’, 对文件名作精确匹配，支持文件名通配</li>
+<li>-iname ‘FILENAME’, 文件名匹配不区分大小写</li>
+<li>-regex PATTERN: 基于正则表达式进行文件名匹配</li>
+<li>-user USERNAME: 根据USER查找</li>
+<li>-group</li>
+<li>-uid</li>
+<li>-gid</li>
+<li>-nouser</li>
+<li>-type 根据文件文件类型来查找 f,d,c,b,l等</li>
+<li>-size [+(大于)|-（小于）] nk,nM,nG,</li>
+</ul>
+</li>
+<li>组合条件<ul>
+<li>默认为与  </li>
+<li>-a 与</li>
+<li>-o 或</li>
+<li>-not 非 </li>
+</ul>
+</li>
+<li>根据时间查找<ul>
+<li>-mtime 修改时间 </li>
+<li>-ctime 改变时间</li>
+<li>-atime 访问时间 -atime 5 刚好五天没有访问过</li>
+<li>[+|-]5  -atime +5 至少五天没有访问过 -atime -5 五天之内访问过</li>
+<li>-mmin -cmin -amin 分钟</li>
+</ul>
+</li>
+<li>根据权限查找<ul>
+<li>-perm mode 权限精确匹配 -perm 644</li>
+<li>-perm -mode 包含匹配 -perm -644 可以匹配到755的文件</li>
+</ul>
+</li>
+<li>运作<ul>
+<li>-print:显示</li>
+<li>-ls: 类似ls -l的形式显示每一个文件的详细</li>
+<li>-ok COMMAND {} ; <strong>空格 反斜线 分号 缺一不可</strong> 每一次操作都需要用户确认; {}表示引用查找到的结果</li>
+<li>-exec COMMAND {} ;</li>
+<li>|xargs 可以不用占位符<blockquote>
+<p>find /etc -size +1M | xargs echo &gt;&gt; /tmp/etc.largefiles </p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="特殊权限"><a href="#特殊权限" class="headerlink" title="特殊权限"></a>特殊权限</h2><ul>
+<li><p>SUID： 运行某程序时，相应进程的属主是程序文件自身的属主，而不是启动者</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod u+s FILE</span><br><span class="line">chmod u-s FILE</span><br><span class="line">如果FILE本身有执行权限，则SUID显示为s，否则显示S；</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>SGID： 运行某程序时，相应进程的属主是程序文件自身的属组，而不是启动者</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod g+s FILE</span><br><span class="line">chmod g-s FILE</span><br><span class="line">(应用场景：给目录加SGID,在目录中添加文件的用户的组都不是自己的基本组，而是目录的基本组，也就是说用户可以享有相互修改和删除文件的权限)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Sticky: 在一个公共目录，每个用户都可以创建文件，删除自己的文件，但不能删除别人的文件</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod o+t DIR</span><br><span class="line">chmod o-t DIR</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>sst 也可以对应相应的二进制：000，001，010，011，100，101，110，111</p>
+<blockquote>
+<p>chmod 5755 /backup/test (把文件权限改成: rws-r-x-r-t)</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="FACL"><a href="#FACL" class="headerlink" title="FACL"></a>FACL</h2><p>FileSystem Access Control List<br>利用文件扩展保存额外的访问控制权限<br><strong>正常流程 owner-&gt;group-&gt;other</strong><br><strong>facl流程 owner-&gt;facl,user-&gt;group-&gt;facl-&gt;facl,group-&gt;other</strong></p>
+<ul>
+<li>setfacl<ul>
+<li>-m : 设定<ul>
+<li>u:用户名:perm</li>
+<li>g:组名:perm</li>
+</ul>
+</li>
+<li>-x : 取消<ul>
+<li>u:用户名</li>
+<li>g:组名 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>getfacl</li>
+<li>–mask </li>
+</ul>
+<h2 id="who"><a href="#who" class="headerlink" title="who"></a>who</h2><ul>
+<li>whoami 打印当前有效的用户名</li>
+<li>who 显示当前系统谁在登录</li>
+<li>w 显示登录信息</li>
+<li>which 寻找命令位置 type 显示命令类型</li>
+<li>whereis 搜索特定文件, 后面跟文件或目录的名字 </li>
+<li>last 显示/var/log/wtmp文件，显示用户登录历史及系统重启历史<ul>
+<li>-n 数字：显示最近多少次的相关信息</li>
+</ul>
+</li>
+<li>lastb 显示/var/log/btmp文件，显示用户的错误登录尝试</li>
+<li>lastlog 显示每一个用户最近一次的成功登录信息<ul>
+<li>-u USERNAME: 显示特定用户最近的登录信息</li>
+</ul>
+</li>
+<li>hostname 显示当前主机名</li>
+<li>basename 去掉路径名，只保留文件名</li>
+<li>$RANDOM 0~32768之间的随机数值</li>
+<li>du 打印目录中所有文件以及目录本身的大小<ul>
+<li>-s 仅打印目录本身的大小</li>
+<li>-h 进行数据的单位换算</li>
+</ul>
+</li>
+</ul>
+<h2 id="磁盘管理及文件链接"><a href="#磁盘管理及文件链接" class="headerlink" title="磁盘管理及文件链接"></a>磁盘管理及文件链接</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><ul>
+<li><p>硬链接 表示两个文件指向同一个inode(索引节点)</p>
+<blockquote>
+<p>ln SRC DEST</p>
+</blockquote>
+<ul>
+<li>只能对文件创建，不能应用于目录</li>
+<li>不能跨文件系统</li>
+<li>创建硬链接会增加文件被硬链接的次数</li>
+</ul>
+</li>
+<li><p>符号链接  一个文件的内容为另一个文件的路径</p>
+<blockquote>
+<p>ln -s SRC DEST    </p>
+</blockquote>
+<ul>
+<li>可应用于目录</li>
+<li>可以跨文件系统</li>
+<li>不会增加被链接文件的链接次数</li>
+<li>其大小为路径所包含的字符个数 </li>
+</ul>
+</li>
+</ul>
+<h3 id="磁盘管理"><a href="#磁盘管理" class="headerlink" title="磁盘管理"></a>磁盘管理</h3><ul>
+<li>df 评估一个分区磁盘块的使用情况以及inode的使用情况</li>
+</ul>
+<h3 id="设备文件"><a href="#设备文件" class="headerlink" title="设备文件"></a>设备文件</h3><ul>
+<li><p>存放在/dev目录下，都有两个数字</p>
+<ul>
+<li>主设备号(major number) 标识设备类型</li>
+<li>次设备号(minor number) 标识同一类型中的不同设备 </li>
+</ul>
+</li>
+<li><p>b: 按块为单位，随机访问的设备，比如硬盘</p>
+</li>
+<li><p>c 按字符为单位，线性设备</p>
+</li>
+<li><p>创建设备文件</p>
+<blockquote>
+<p>mknod 设备名称 设备类型（b/c） 主设备号 次设备号</p>
+</blockquote>
+</li>
+<li><p>列出当前系统所有磁盘以及磁盘分区</p>
+<blockquote>
+<p>fdisk -l</p>
+</blockquote>
+</li>
+<li><p>管理磁盘分区</p>
+<blockquote>
+<p>fdisk /dev/sda (进入交互界面)</p>
+</blockquote>
+<ul>
+<li>p : 显示当前硬件的分区，包括没保存的改动</li>
+<li>n : 创建新分区</li>
+<li>d : 删除一个分区</li>
+<li>w : 保存退出</li>
+<li>q : 不保存退出</li>
+<li>t : 修改分区类型</li>
+<li>l : 显示所支持的所有类型  </li>
+</ul>
+</li>
+</ul>
+<h3 id="linux支持的文件系统"><a href="#linux支持的文件系统" class="headerlink" title="linux支持的文件系统"></a>linux支持的文件系统</h3><ul>
+<li>文件系统属于内核功能，每一个分区可以使用不同的文件系统，而最后都要归并到根目录下，归并的方式成为挂载</li>
+<li>VFS: VIRTURL FILE SYSTEM</li>
+<li>高级格式化： 创建文件系统<blockquote>
+<p>mkfs -t ext3 (创建一个ext3类型的文件系统)</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="压缩-解压缩命令"><a href="#压缩-解压缩命令" class="headerlink" title="压缩 解压缩命令"></a>压缩 解压缩命令</h2><ul>
+<li><p>压缩格式： gz,bz2,xz,zip,Z</p>
+</li>
+<li><p>压缩算法: 算法不同，压缩比也会不同</p>
+</li>
+<li><p>常用：xz,bz2,gz(只能压缩文件，不能压缩目录，删除源文件，只保留压缩后的文件)</p>
+</li>
+<li><p>命令</p>
+<ul>
+<li><p>压缩</p>
+<blockquote>
+<p>gzip file</p>
+</blockquote>
+</li>
+<li><p>解压缩 </p>
+<blockquote>
+<p>gunzip file<br>gzip -d file<br>gzip -n 1-9 指定压缩比 默认是6</p>
+</blockquote>
+</li>
+<li><p>bzip2 比gzip对于大文件压缩效果明显 使用格式近似</p>
+<ul>
+<li>-k 保留压缩源文件</li>
+</ul>
+</li>
+<li><p>xz 用法相同，压缩比更大 解压 unxz </p>
+</li>
+<li><p>zip 既归档又可以压缩目录</p>
+<blockquote>
+<p>zip FILENAME.zip FILE1 FILE2… 压缩后不删除源文件<br>unzip FILENAME.zip</p>
+</blockquote>
+</li>
+<li><p>tar: 只归档不压缩</p>
+<ul>
+<li>-c : 创建归档文件</li>
+<li>-f FILE.tar: 操作的归档文件</li>
+<li>-x 展开归档文件</li>
+<li>–xattrs 归档时，保留文件的扩展属性信息</li>
+<li>-t 不展开归档，查看内部文件</li>
+<li>-zcf: 先归档再用gzip压缩  </li>
+<li>-zxf: 先用gzip解压缩，并展开归档, -z 选项可以省略</li>
+<li>-jcf: bzip2</li>
+<li>-jxf: </li>
+<li>-Jcf: xz</li>
+<li>-Jxf</li>
+<li>-p 保留备份数据的原始权限和属性</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2016/07/13/Markdown%E8%AF%AD%E6%B3%95%E7%BB%83%E4%B9%A0/" rel="prev" title="Markdown语法练习">
+      <i class="fa fa-chevron-left"></i> Markdown语法练习
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2016/07/27/shell%E7%BC%96%E7%A8%8B%E5%8F%8C%E5%8F%82%E6%95%B0%E6%A8%A1%E5%BC%8F/" rel="next" title="shell编程双参数模式">
+      shell编程双参数模式 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#LINUX-综述"><span class="nav-text">LINUX 综述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#命令提示符"><span class="nav-text">命令提示符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令格式："><span class="nav-text">命令格式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户的登录"><span class="nav-text">用户的登录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用命令"><span class="nav-text">常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建目录"><span class="nav-text">创建目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路径"><span class="nav-text">路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表-list-ls-列表-l"><span class="nav-text">列表 list: ls 列表 -l</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#列表内容"><span class="nav-text">列表内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列表选项"><span class="nav-text">列表选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切换目录"><span class="nav-text">切换目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命令类型："><span class="nav-text">命令类型：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#环境变量：-命名的内存空间"><span class="nav-text">环境变量： 命名的内存空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#type-显示指令属于哪种类型"><span class="nav-text">type: 显示指令属于哪种类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#date-时间管理"><span class="nav-text">date: 时间管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获得命令的使用帮助："><span class="nav-text">获得命令的使用帮助：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件系统"><span class="nav-text">文件系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令类型"><span class="nav-text">命令类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#目录管理：-ls-cd-pwd"><span class="nav-text">目录管理： ls cd pwd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件创建和删除"><span class="nav-text">文件创建和删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除"><span class="nav-text">删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制和移动文件"><span class="nav-text">复制和移动文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看文本"><span class="nav-text">查看文本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BASH"><span class="nav-text">BASH</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#命令行编辑"><span class="nav-text">命令行编辑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#光标跳转"><span class="nav-text">光标跳转:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令历史"><span class="nav-text">命令历史</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查看命令历史"><span class="nav-text">查看命令历史</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命令历史的使用技巧"><span class="nav-text">命令历史的使用技巧</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令补全"><span class="nav-text">命令补全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令别名"><span class="nav-text">命令别名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令替换"><span class="nav-text">命令替换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件名通配"><span class="nav-text">文件名通配</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户-组-权限"><span class="nav-text">用户 组 权限</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件："><span class="nav-text">文件：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录："><span class="nav-text">目录：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#etc-passwd"><span class="nav-text">&#x2F;etc&#x2F;passwd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#etc-shadow"><span class="nav-text">&#x2F;etc&#x2F;shadow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#etc-group"><span class="nav-text">&#x2F;etc&#x2F;group</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户管理"><span class="nav-text">用户管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加用户"><span class="nav-text">添加用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询用户ID"><span class="nav-text">查询用户ID</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除用户"><span class="nav-text">删除用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改用户账号属性"><span class="nav-text">修改用户账号属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改用户shell"><span class="nav-text">修改用户shell</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改或设置密码"><span class="nav-text">修改或设置密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检查用户帐号的完整性"><span class="nav-text">检查用户帐号的完整性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组管理"><span class="nav-text">组管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#权限管理"><span class="nav-text">权限管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shell的类型"><span class="nav-text">shell的类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bash的配置文件"><span class="nav-text">bash的配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件的隐藏属性"><span class="nav-text">文件的隐藏属性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-O"><span class="nav-text">I&#x2F;O</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#系统设定"><span class="nav-text">系统设定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#I-O-重定向"><span class="nav-text">I&#x2F;O 重定向</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本查找"><span class="nav-text">文本查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#grep-根据模式搜索文本，并将符合模式的文本行显示出来"><span class="nav-text">grep: 根据模式搜索文本，并将符合模式的文本行显示出来</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则表达式：REGULAR-EXPRESSION-REGEXP"><span class="nav-text">正则表达式：REGULAR EXPRESSION, REGEXP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脚本编程"><span class="nav-text">脚本编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#脚本"><span class="nav-text">脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件"><span class="nav-text">条件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#条件测试类型"><span class="nav-text">条件测试类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件测试的表达式"><span class="nav-text">条件测试的表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#整数测试："><span class="nav-text">整数测试：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命令的逻辑关系"><span class="nav-text">命令的逻辑关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件判断，控制结构"><span class="nav-text">条件判断，控制结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#case语句"><span class="nav-text">case语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#退出脚本"><span class="nav-text">退出脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shell-中如何进行算术运算：A-3-B-6"><span class="nav-text">shell 中如何进行算术运算：A&#x3D;3 B&#x3D;6</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件测试"><span class="nav-text">文件测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符测试"><span class="nav-text">字符测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试脚本是否有语法错误"><span class="nav-text">测试脚本是否有语法错误</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行并逐步查看脚本"><span class="nav-text">执行并逐步查看脚本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环"><span class="nav-text">循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合测试条件"><span class="nav-text">组合测试条件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sed"><span class="nav-text">sed</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本用法"><span class="nav-text">基本用法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim"><span class="nav-text">vim</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vim的模式"><span class="nav-text">vim的模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模式转换"><span class="nav-text">模式转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打开文件"><span class="nav-text">打开文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭文件"><span class="nav-text">关闭文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动光标（编辑模式）"><span class="nav-text">移动光标（编辑模式）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#逐字符移动"><span class="nav-text">逐字符移动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逐单词移动"><span class="nav-text">逐单词移动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行内跳转"><span class="nav-text">行内跳转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行间跳转"><span class="nav-text">行间跳转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#翻屏"><span class="nav-text">翻屏</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作文本"><span class="nav-text">操作文本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#删除单个字符"><span class="nav-text">删除单个字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除命令"><span class="nav-text">删除命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#粘贴命令"><span class="nav-text">粘贴命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复制命令"><span class="nav-text">复制命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改"><span class="nav-text">修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#替换"><span class="nav-text">替换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#撤销编辑操作"><span class="nav-text">撤销编辑操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#还原撤销操作"><span class="nav-text">还原撤销操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重复此前的操作"><span class="nav-text">重复此前的操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可视化模式"><span class="nav-text">可视化模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查找替换"><span class="nav-text">查找替换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打开多个文件"><span class="nav-text">打开多个文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分屏显示文件"><span class="nav-text">分屏显示文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跟shell交互"><span class="nav-text">跟shell交互</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高级话题"><span class="nav-text">高级话题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置文件"><span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vim教程"><span class="nav-text">vim教程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件查找"><span class="nav-text">文件查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#locate"><span class="nav-text">locate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#find"><span class="nav-text">find</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊权限"><span class="nav-text">特殊权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FACL"><span class="nav-text">FACL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#who"><span class="nav-text">who</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#磁盘管理及文件链接"><span class="nav-text">磁盘管理及文件链接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#磁盘管理"><span class="nav-text">磁盘管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设备文件"><span class="nav-text">设备文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux支持的文件系统"><span class="nav-text">linux支持的文件系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#压缩-解压缩命令"><span class="nav-text">压缩 解压缩命令</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Tricrepe"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Tricrepe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Tricrepe" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Tricrepe" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:644468681@.com" title="E-Mail → mailto:644468681@.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      坐标轴
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.neilgaiman.com/" title="https:&#x2F;&#x2F;www.neilgaiman.com" rel="noopener" target="_blank">NG</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.fn.com/" title="https:&#x2F;&#x2F;www.fn.com" rel="noopener" target="_blank">ds</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tricrepe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
