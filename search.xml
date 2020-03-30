@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>全栈精进指南</title>
+    <url>/2020/03/30/%E5%85%A8%E6%A0%88%E7%B2%BE%E8%BF%9B%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<p>如何从一个前端安全过渡到全栈</p>
+<h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><ul>
+<li><p>不要觉得前端负责的是“长什么样”，你做的多了就会明白，答案就是“一个网站正常的样子”。<br>前端要做是展示数据，展示数据，展示数据。</p>
+</li>
+<li><p>html本身就那么回事。结合vue、react这些主流框架，把<strong>数据</strong>映射到页面上，也就是给你一张json，你能用filter,map等各种方法处理数据，并把数据展示出来。这里react更亲切一点，因为react处理数据写法就是原生，很少加自己的装饰器，更加轻便</p>
+</li>
+<li><p>轮播这种奇技淫巧闲着没事可以研究，培训班老爱拿这个忽悠，但用处不大。网站最重要的是如何高效的、有逻辑的把数据呈现出来</p>
+</li>
+<li><p>css必须玩得很溜，SVG和动画是非常重要的加分项。</p>
+</li>
+<li><p>响应式知识点很不起眼，但必须熟悉</p>
+</li>
+</ul>
+<h2 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h2><ul>
+<li>掌握express等后端框架 以及 mongodb里的简单的增删改查不难，难点在于数据模型的搭建和操作</li>
+</ul>
+<h2 id="前后端沟通"><a href="#前后端沟通" class="headerlink" title="前后端沟通"></a>前后端沟通</h2><ul>
+<li>对于刚开始转型的前端来说，这一块要绕很久，不过经常用到的无非以下几点<ul>
+<li>获取数据</li>
+<li>登陆校验</li>
+<li>签发token</li>
+<li>根据token做跳转限制</li>
+</ul>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>用Vuejs和Express和Mongodb做个Todo小程序</title>
+    <url>/2020/03/24/%E7%94%A8Vuejs%E5%92%8CExpress%E5%92%8CMongodb%E5%81%9A%E4%B8%AATodo%E5%B0%8F%E7%A8%8B%E5%BA%8F/</url>
+    <content><![CDATA[]]></content>
+      <tags>
+        <tag>【Vue, MongoDB】</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>网络</title>
     <url>/2017/02/10/%E7%BD%91%E7%BB%9C/</url>
     <content><![CDATA[<p>结合《网络是怎样连接的》（户根勤著）和《图解HTTP》（上野宣著）做的笔记</p>
