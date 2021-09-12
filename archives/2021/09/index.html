@@ -20,18 +20,14 @@
     var CONFIG = {"hostname":"tricrepe.github.io","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#E9574F","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="之前在《Python基础》提过一下decorator, 这次深入探讨和研究一下">
-<meta property="og:type" content="article">
-<meta property="og:title" content="decorator详解">
-<meta property="og:url" content="http://tricrepe.github.io/2016/09/04/decorator%E8%AF%A6%E8%A7%A3/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Tricrepe">
+<meta property="og:url" content="http://tricrepe.github.io/archives/2021/09/index.html">
 <meta property="og:site_name" content="Tricrepe">
-<meta property="og:description" content="之前在《Python基础》提过一下decorator, 这次深入探讨和研究一下">
-<meta property="article:published_time" content="2016-09-04T05:15:11.000Z">
-<meta property="article:modified_time" content="2016-11-07T07:38:52.000Z">
 <meta property="article:author" content="Tricrepe">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://tricrepe.github.io/2016/09/04/decorator%E8%AF%A6%E8%A7%A3/">
+<link rel="canonical" href="http://tricrepe.github.io/archives/2021/09/">
 
 
 <script id="page-configurations">
@@ -39,11 +35,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : true
+    isPost : false
   };
 </script>
 
-  <title>decorator详解 | Tricrepe</title>
+  <title>Archive | Tricrepe</title>
   
 
 
@@ -182,135 +178,50 @@
           <div class="content">
             
 
-  <div class="posts-expand">
-      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://tricrepe.github.io/2016/09/04/decorator%E8%AF%A6%E8%A7%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Tricrepe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tricrepe">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          decorator详解
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2016-09-04 13:15:11" itemprop="dateCreated datePublished" datetime="2016-09-04T13:15:11+08:00">2016-09-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2016-11-07 15:38:52" itemprop="dateModified" datetime="2016-11-07T15:38:52+08:00">2016-11-07</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+  
+  <div class="post-block">
+    <div class="posts-collapse">
+      <div class="collection-title">
+        
+        <span class="collection-header">OK! 32 posts in total. Keep on posting.</span>
+      </div>
 
       
-        <p>之前在《Python基础》提过一下decorator, 这次深入探讨和研究一下</p>
-<a id="more"></a>
-
-<ul>
-<li><p>decorator本质上就是一个高阶函数，他接受一个函数作为参数，返回一个新函数</p>
-</li>
-<li><p>python中decorator用<strong>@</strong> 语法，可以避免使用手动编写f=decorate()</p>
-</li>
-<li><p>写一个日志装饰器<br>  def log(f):</p>
-<pre><code>def fn(x):
-    print(&quot;call&quot;+f.__name__+&quot;()...&quot;)
-    return f(x)
-return fn </code></pre></li>
-<li><p>应用日志装饰器<br>  @log<br>  def factorial(n):</p>
-<pre><code>return reduce(lambda x,y:x*y,range(1,n+1))</code></pre><p>  print(factorial(10))</p>
-</li>
-<li><p>运行结果<br>  call factorial()…<br>  3628800</p>
-</li>
-<li><p>注意： fn的参数个数，要和之后f的参数个数相同，如果保证任意参数正常调用，使用*args 和**kw<br>  def log(f):</p>
-<pre><code>def fn(\*args,\*\*kw):
-    print(&quot;call&quot;+f.__name__+&quot;()...&quot;)
-    return f(\*args,\*\*kw)
-return fn</code></pre></li>
-<li><p>练习：打印函数的调用时间<br>  def performance(f):</p>
-<pre><code>def fn(\*args,\*\*kw):
-    print(&quot;call &quot;+f.__name__+&quot;()...at&quot;+time.asctime()) 
-    return f(\*args,\*\*kw)
-return fn</code></pre><p>  @ performance<br>  def addTwo(x,y):</p>
-<pre><code>return x+y</code></pre><p>  print(addTwo(1,4))<br>  call addTwo()…atSun Sep  4 14:20:19 2016<br>  7</p>
-</li>
-<li><p>带参数的decorator</p>
-<ul>
-<li>原理很简单，就是在标准的decorator外面再包裹一个函数，最后返回decorator本身</li>
-</ul>
-</li>
-<li><p>练习：带参数的decorator<br>  import time<br>  def performance(unit):</p>
-<pre><code>def decorator(f):
-    def fn(\*args,\*\*kw):
-        start = time.clock()
-        if unit==&quot;ms&quot;:
-            print(&quot;call %s using %f ms&quot;%(f.__name__,(time.clock()-start)*1000))
-        elif unit==&quot;s&quot;:
-            print(&quot;call %s using %f s&quot;%(f.__name__,time.clock()-start))
-        else:
-            print(unit +&quot;is a unavailable unit&quot;)
-        return f(\*args,\*\*kw)
-    return fn
-return decorator</code></pre></li>
-</ul>
-
+    <div class="collection-year">
+      <h1 class="collection-header">2021</h1>
     </div>
 
-    
-    
-    
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-      <footer class="post-footer">
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2021-09-12T15:50:07+08:00"
+              content="2021-09-12">
+          09-12
+        </time>
+      </div>
 
-        
+      <h2 class="post-title">
+          <a class="post-title-link" href="/2021/09/12/hugo-dictee/" itemprop="url">
+            <span itemprop="name">hugo dictee</span>
+          </a>
+      </h2>
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2016/09/04/%E9%97%AD%E5%8C%85%E5%87%BD%E6%95%B0%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%BE%AA%E7%8E%AF%E5%8F%98%E9%87%8F/" rel="prev" title="闭包函数如何使用循环变量">
-      <i class="fa fa-chevron-left"></i> 闭包函数如何使用循环变量
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2016/09/12/%E9%87%8D%E6%B8%A9Javascript/" rel="next" title="重温Javascript">
-      重温Javascript <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
+    </header>
   </article>
+
+
+    </div>
+  </div>
   
   
   
 
-  </div>
+  
+
 
 
           </div>
