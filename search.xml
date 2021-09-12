@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>hugo dictee</title>
-    <url>/2021/09/12/hugo-dictee/</url>
-    <content><![CDATA[<p>hahaha</p>
-]]></content>
-  </entry>
-  <entry>
     <title>删除数组中的元素</title>
     <url>/2020/08/12/%E5%88%A0%E9%99%A4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%85%83%E7%B4%A0/</url>
     <content><![CDATA[<p>删除数组元素的两种方法</p>
@@ -63,54 +57,6 @@
       <tags>
         <tag>Nodejs</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>亚文化网站研究</title>
-    <url>/2020/04/05/%E4%BA%9A%E6%96%87%E5%8C%96%E7%BD%91%E7%AB%99%E7%A0%94%E7%A9%B6/</url>
-    <content><![CDATA[<p>AO3 asianfanfics wattpad</p>
-<a id="more"></a>
-
-<p>怪谈<br>New weird<br>与其他网络文学平台相比，被逼停的AO3（图①）的最大特点是大多数作品为“同人”小说。“同人”一词源自日本，原意为“志同道合之人”，现在一般指基于已经存在的作品或人物进行创作的衍生物，比如美国推理小说家埃勒里·奎因的《恐怖的研究》是福尔摩斯系列同人，好莱坞电影《五十度灰》原作小说是《暮光之城》同人。与“改编”不同，同人一般包括作者自己添加的内容，基本可以看作为独立作品。截至2019年，AO3网站上有基于3.5万种原作的550万部作品，包括动漫游戏、影视剧、体育界、经典文学等细分类别。因不少作者对科学研究感兴趣，AO3上也不乏学术报告、研究论文等。</p>
-<p>作为青年亚文化圈最重要的组成部分，同人创作通常体现年轻人创作中“非专业”“草根文化”等特点。因其非商业的性质，这些创作常被戏称为“为爱发电”——在某一个圈内的爱好者愿自掏腰包去维持圈子的存在。以AO3为例，从2008年创建之始，其运营完全靠网民捐助，没有任何广告营销。发展至今，有些同人作品逐渐走向“正统”，例如美国科幻IP《星际迷航》曾有一部同人续集剧，其中有演员是原饰演者的儿子，工作人员中也有专业的美国配音演员。AO3的创始人娜奥米·诺维克本身也是一名同人作家，她原创的长篇奇幻小说《连根拔起》获得2016年科幻文学大奖星云奖。AO3平台本身也获得2019年雨果奖“最佳相关工作”奖。</p>
-<p>除了AO3之外，世界各地有不少类似平台，例如加拿大的Wattpad、以亚洲为主的AsianFanfics、日本的Pixiv、Niconico等。不同平台对于作品形式有不同重点，例如Pixiv主要是漫画、插画作品创作，也设有小说版块。同为日本的Niconico“弹幕”视频网则主要是视频剪辑、网络音乐等。另外像LiveJournal、FC2等社群平台原并非直接针对亚文化圈，目前也成为亚文化群体的聚集地。</p>
-<p>成立于2004年的“成为小说家吧”（图②）是日本最大投稿网站。2015年，该网站登录人数突破55万人，2019年阅读人数达1400万人，其中20岁左右读者占近一半。科幻、异世界、恋爱、魔法、冒险、重生、校园、架空，日本小说网站作品分类十分详细。</p>
-<p>在韩国，Munpia和Joara是网络小说平台两大巨头。2012年以武侠小说起家的Munpia，截至2019年11月注册用户已超过90万，以男性读者居多，题材上奇幻、体育游戏、武侠类小说各占一定比重。2011年创建的Joara网站，则以浪漫爱情、穿越、讽刺类小说居多，还专设“BL（BoysLove）”小说分类，是韩国为数不多刊载此类小说的平台。韩国第一代武侠小说家、Munpia网站CEO金焕哲表示：“看网络小说和网漫已成为韩国年轻人的日常习惯，网络小说改编成电视剧、电影和游戏的趋势业已形成，近年热门韩剧《成均馆绯闻》《云画的月光》（图③）《正义之刃》等均改编自人气网络小说。所以，未来网络小说市场发展空间仍很巨大。”</p>
-<h3 id="asianfanfics"><a href="#asianfanfics" class="headerlink" title="asianfanfics"></a>asianfanfics</h3><p><strong>**</strong>个人主页<strong>**</strong><br>/profile<br>    /view/<br>        /:userid<br><strong>**</strong>个人主页_故事<strong>**</strong><br>        /view_author_stories<br>            /:userid</p>
-<p><strong>**</strong>个人主页_博客<strong>**</strong><br>    /blog<br>        /index/:userid</p>
-<p><strong>**</strong>个人主页_feed<strong>**</strong><br>/feed<br>    /[tag,user,followed,followers]<br>        /:userid<br><strong>**</strong>个人主页_书签<strong>**</strong><br>/bookmark<br>    /view<br>        /:userid<br><strong>**</strong>个人主页_投票<strong>**</strong><br>/vote<br>    /view<br>        /:userid<br><strong>**</strong>个人主页_标签<strong>**</strong><br>/label<br>    /view<br>        /:userid<br><strong>**</strong>个人主页_评论<strong>**</strong><br>/user_comments<br>    /[stories,blogs,polls,videos,images]<br>        /:userid<br><strong>**</strong>个人主页_相册/视频<strong>**</strong><br>/[album,video]<br>    /user<br>        /:userid<br><strong>**</strong>个人主页_朋友<strong>**</strong><br>/friends<br>    /view<br>        /:userid<br><strong>**</strong>个人主页_历史<strong>**</strong><br>    /history<br>    /profile_history</p>
-<p><strong>**</strong>站内货币<strong>****</strong><br>    /account<br>        /view_karma_history<br>            /:userid</p>
-<p>/browse<br>    /featured<br>    /trending<br>    /recommended<br>    /views<br>    ?filter=[all, crowdfunded, featured, ratedfeaatured, undiscovered, completed, oneshots]<br>    &amp;sort=[ latest, newest, views, subscriptions, comments,chaptercounts,worddcounts,votes]<br>    &amp;tag=[]<br>    &amp;pageNum=[1,2,3,4…]</p>
-<hr>
-<pre><code>/tag
-    /tagname</code></pre><hr>
-<pre><code>/users
-/whos_online
-/pop_authors
-/streakranking</code></pre><p>/pm<br>    /inbox<br>        /:userid<br>    /sent<br>        /:userid</p>
-<p>/story<br>    /create<br>    /view_random<br>    /view<br>        /:storyid<br>            /:forword||:chapter</p>
-<p>/feed<br>    /story_feed<br>        /:userid<br>    /tag<br>        /:userid<br>/blog<br>    /add<br>    /view<br>        /:blog_id/:blog_title<br>/chat<br>    /add</p>
-<h3 id="wattpad"><a href="#wattpad" class="headerlink" title="wattpad"></a>wattpad</h3>]]></content>
-      <categories>
-        <category>程序</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>毒</title>
-    <url>/2020/04/04/%E6%AF%92/</url>
-    <content><![CDATA[<p>我变成一剂毒药 只是不想随随便便被猛兽吃掉</p>
-<a id="more"></a>
-<h2 id="Chapter-1"><a href="#Chapter-1" class="headerlink" title="Chapter 1"></a>Chapter 1</h2><p>16岁的刘星和妈妈一起去海外度假，在酒店checking的时候，遇到了夏东海。夏东海和刘梅三年前离了婚。刘星遇到了夏雨，他不再活泼</p>
-<p>原来三年前，夏雪被人强暴，与这件事情有关联的人都陷入了深深的自责。</p>
-<p>夏东海应付酒局没有接到女儿的电话<br>刘梅本来应该在去接夏雪，但她和朋友去抢购打折衣服<br>夏雨躲了起来，没有救姐姐</p>
-<p>很多年以后，刘星才承认，那伙人是他引过去的，只是他不知道那些人是禽兽。</p>
-<p>夏东海和刘梅离婚了，夏雪也从一个乖学生变成了坏女孩，</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>夏雪喝酒</p>
-<p>##</p>
-<p>男人说只要刘星敢把虫子吃下去，他就把夏雪让给他。刘星最后还是怂了<br>刘星把男子一脚踹进泉水，拉着夏雪离开。夏雪让他滚蛋，</p>
-<p>##</p>
-<p>在回程的船上，夏雪和刘星作别，他们听人说，有几个年轻人昨晚死在了岛上，刘星开始以为自己又闯祸了。后来才知道，那个富家男孩与人打赌，吃了那个蝴蝶的幼虫，毒发身亡。<br>别人议论，那种蝴蝶虽然美丽，为了保护自己，他每天都吃有毒的东西，最后他的身上也都是剧毒。猎食者很可怕，有各种狡猾的方法诱捕你，你生活在丛林，怎么防范都无济于事，把自己变成一副毒药，也许是最好的方法。</p>
-<p>刘星莫名其妙的满脸泪水，他看了夏雪一眼，发现她也一样。</p>
-]]></content>
   </entry>
   <entry>
     <title>网络</title>
@@ -1601,6 +1547,84 @@ fs.append(f)</code></pre><p>  return fs</p>
   </entry>
   <entry>
     <title>MongoDB</title>
+    <url>/2016/08/26/Mongodb/</url>
+    <content><![CDATA[<p>MongoDB的一些基本用法</p>
+<a id="more"></a>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/" target="_blank" rel="noopener">官方文档</a></p>
+<ul>
+<li>brew 安装与启动<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew tap mongodb/brew</span><br><span class="line">brew install mongodb-community</span><br><span class="line">brew services start mongodb-community</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="mongo-shell"><a href="#mongo-shell" class="headerlink" title="mongo shell"></a>mongo shell</h2><ul>
+<li>打开shell <blockquote>
+<p>mongo </p>
+</blockquote>
+</li>
+<li>查看当前数据库<blockquote>
+<p>db</p>
+</blockquote>
+</li>
+<li>切换数据库<blockquote>
+<p>use <database></p>
+</blockquote>
+</li>
+<li>退出<blockquote>
+<p>exit</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="增删改"><a href="#增删改" class="headerlink" title="增删改"></a>增删改</h2><h3 id="增加一个对象"><a href="#增加一个对象" class="headerlink" title="增加一个对象"></a>增加一个对象</h3><blockquote>
+<p>db.albums.insertOne({title:’夜曲’})<br>db.albums.find()<br>{ “_id” : ObjectId(“57be0d54ab7bbec91c834ce7”), “title” : “夜曲” }     <em>_id是自动赋予对象的</em></p>
+</blockquote>
+<h3 id="增加多个对象"><a href="#增加多个对象" class="headerlink" title="增加多个对象"></a>增加多个对象</h3><blockquote>
+<p>db.albums.insertMany或者insert({title:’叶惠美’},{title:’龙卷风’}]) <em>二者返回值不同</em></p>
+</blockquote>
+<h3 id="修改多个符合条件的对象"><a href="#修改多个符合条件的对象" class="headerlink" title="修改多个符合条件的对象"></a>修改多个符合条件的对象</h3><blockquote>
+<p>db.albums.updateMany({过滤器}，{$set:{artist:’周杰伦’}})</p>
+</blockquote>
+<h3 id="修改一个符合条件的对象"><a href="#修改一个符合条件的对象" class="headerlink" title="修改一个符合条件的对象"></a>修改一个符合条件的对象</h3><blockquote>
+<p>db.albums.updateOne/update({过滤器},{$set:{artist:’周杰伦’}})</p>
+</blockquote>
+<ul>
+<li>update方法有两个参数，第一个是筛选条件，第二个是修改内容</li>
+<li>$set是操作符， 一定不要忘记</li>
+</ul>
+<h3 id="删除一个或多个文档"><a href="#删除一个或多个文档" class="headerlink" title="删除一个或多个文档"></a>删除一个或多个文档</h3><blockquote>
+<p>db.albums.remove({过滤器},true/false)</p>
+</blockquote>
+<ul>
+<li>true 表示 只删除第一个符合条件的文档</li>
+<li>false或者默认，删除所有符合条件的文档</li>
+</ul>
+<h2 id="查询文档"><a href="#查询文档" class="headerlink" title="查询文档"></a>查询文档</h2><h3 id="基本方法"><a href="#基本方法" class="headerlink" title="基本方法"></a>基本方法</h3><blockquote>
+<p>db.movies.find({过滤器},{title:1,year:1 _id:0<em>返回结果是否包含</em>})</p>
+</blockquote>
+<h3 id="查询结果控制"><a href="#查询结果控制" class="headerlink" title="查询结果控制"></a>查询结果控制</h3><ul>
+<li>.size() 查询到的对象数</li>
+<li>.limit(N) 最多查到N个结果</li>
+<li>.skip(N) 跳过N个查询结果</li>
+<li>.sort({属性:1/-1}) 根据某项属性对查询结果进行排序 </li>
+</ul>
+<h3 id="操作符过滤"><a href="#操作符过滤" class="headerlink" title="操作符过滤"></a>操作符过滤</h3><blockquote>
+<p>db.movies.find({“rating.average”:{$gt:9.5}},{title:1,year:1,_id:0}) </p>
+</blockquote>
+<ul>
+<li>找出电影列表里评分大于9.5的电影，返回电影的标题，年份，不返回ID</li>
+<li>$gt 大于操作符</li>
+<li>$lt 小于操作符</li>
+<li>$in $nin 包含/不包含 操作符，返回genre的值里包含 犯罪 或 剧情的电影<blockquote>
+<p>db.movies.find({genre:{$in:[“犯罪”,”剧情”]}},{title:1,year:1,_id:0})</p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>程序</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>MongoDB</title>
     <url>/2016/08/26/Mongodb-NOTE/</url>
     <content><![CDATA[<p>MongoDB的一些基本用法</p>
 <a id="more"></a>
@@ -1687,84 +1711,6 @@ fs.append(f)</code></pre><p>  return fs</p>
 <li>$gt 大于操作符</li>
 <li>$lt 小于操作符</li>
 <li>$in/$nin 包含/不包含 操作符，返回genre的值里包含 犯罪 或 剧情的电影</li>
-</ul>
-]]></content>
-      <categories>
-        <category>程序</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>MongoDB</title>
-    <url>/2016/08/26/Mongodb/</url>
-    <content><![CDATA[<p>MongoDB的一些基本用法</p>
-<a id="more"></a>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/" target="_blank" rel="noopener">官方文档</a></p>
-<ul>
-<li>brew 安装与启动<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew tap mongodb/brew</span><br><span class="line">brew install mongodb-community</span><br><span class="line">brew services start mongodb-community</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="mongo-shell"><a href="#mongo-shell" class="headerlink" title="mongo shell"></a>mongo shell</h2><ul>
-<li>打开shell <blockquote>
-<p>mongo </p>
-</blockquote>
-</li>
-<li>查看当前数据库<blockquote>
-<p>db</p>
-</blockquote>
-</li>
-<li>切换数据库<blockquote>
-<p>use <database></p>
-</blockquote>
-</li>
-<li>退出<blockquote>
-<p>exit</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="增删改"><a href="#增删改" class="headerlink" title="增删改"></a>增删改</h2><h3 id="增加一个对象"><a href="#增加一个对象" class="headerlink" title="增加一个对象"></a>增加一个对象</h3><blockquote>
-<p>db.albums.insertOne({title:’夜曲’})<br>db.albums.find()<br>{ “_id” : ObjectId(“57be0d54ab7bbec91c834ce7”), “title” : “夜曲” }     <em>_id是自动赋予对象的</em></p>
-</blockquote>
-<h3 id="增加多个对象"><a href="#增加多个对象" class="headerlink" title="增加多个对象"></a>增加多个对象</h3><blockquote>
-<p>db.albums.insertMany或者insert({title:’叶惠美’},{title:’龙卷风’}]) <em>二者返回值不同</em></p>
-</blockquote>
-<h3 id="修改多个符合条件的对象"><a href="#修改多个符合条件的对象" class="headerlink" title="修改多个符合条件的对象"></a>修改多个符合条件的对象</h3><blockquote>
-<p>db.albums.updateMany({过滤器}，{$set:{artist:’周杰伦’}})</p>
-</blockquote>
-<h3 id="修改一个符合条件的对象"><a href="#修改一个符合条件的对象" class="headerlink" title="修改一个符合条件的对象"></a>修改一个符合条件的对象</h3><blockquote>
-<p>db.albums.updateOne/update({过滤器},{$set:{artist:’周杰伦’}})</p>
-</blockquote>
-<ul>
-<li>update方法有两个参数，第一个是筛选条件，第二个是修改内容</li>
-<li>$set是操作符， 一定不要忘记</li>
-</ul>
-<h3 id="删除一个或多个文档"><a href="#删除一个或多个文档" class="headerlink" title="删除一个或多个文档"></a>删除一个或多个文档</h3><blockquote>
-<p>db.albums.remove({过滤器},true/false)</p>
-</blockquote>
-<ul>
-<li>true 表示 只删除第一个符合条件的文档</li>
-<li>false或者默认，删除所有符合条件的文档</li>
-</ul>
-<h2 id="查询文档"><a href="#查询文档" class="headerlink" title="查询文档"></a>查询文档</h2><h3 id="基本方法"><a href="#基本方法" class="headerlink" title="基本方法"></a>基本方法</h3><blockquote>
-<p>db.movies.find({过滤器},{title:1,year:1 _id:0<em>返回结果是否包含</em>})</p>
-</blockquote>
-<h3 id="查询结果控制"><a href="#查询结果控制" class="headerlink" title="查询结果控制"></a>查询结果控制</h3><ul>
-<li>.size() 查询到的对象数</li>
-<li>.limit(N) 最多查到N个结果</li>
-<li>.skip(N) 跳过N个查询结果</li>
-<li>.sort({属性:1/-1}) 根据某项属性对查询结果进行排序 </li>
-</ul>
-<h3 id="操作符过滤"><a href="#操作符过滤" class="headerlink" title="操作符过滤"></a>操作符过滤</h3><blockquote>
-<p>db.movies.find({“rating.average”:{$gt:9.5}},{title:1,year:1,_id:0}) </p>
-</blockquote>
-<ul>
-<li>找出电影列表里评分大于9.5的电影，返回电影的标题，年份，不返回ID</li>
-<li>$gt 大于操作符</li>
-<li>$lt 小于操作符</li>
-<li>$in $nin 包含/不包含 操作符，返回genre的值里包含 犯罪 或 剧情的电影<blockquote>
-<p>db.movies.find({genre:{$in:[“犯罪”,”剧情”]}},{title:1,year:1,_id:0})</p>
-</blockquote>
-</li>
 </ul>
 ]]></content>
       <categories>
