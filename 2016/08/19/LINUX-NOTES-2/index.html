@@ -242,7 +242,7 @@
 
       
         <p>网络与自动化相关</p>
-<a id="more"></a>
+<span id="more"></span>
 <h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><h2 id="定时任务服务crond"><a href="#定时任务服务crond" class="headerlink" title="定时任务服务crond"></a>定时任务服务crond</h2><ul>
 <li><p>用来定期执行命令或者指定程序任务的一种服务或者软件</p>
 </li>
@@ -257,8 +257,10 @@
 </li>
 <li><p>定时任务分类</p>
 <ol>
-<li>系统自身的定期执行任务 /var/log/messages* /var/log/secure*</li>
-<li>用户执行的定时任务<ul>
+<li>系统自身的定期执行任务 &#x2F;var&#x2F;log&#x2F;messages* &#x2F;var&#x2F;log&#x2F;secure*</li>
+<li>用户执行的定时任务</li>
+</ol>
+<ul>
 <li>at适合执行一次就结束的任务，突发性任务（不常用）依赖服务atd</li>
 <li>anacron 适合于非7*24小时开机的服务器。 开机执行，检测停机期间没有执行的任务，在开机后一次性执行一遍</li>
 <li>crond  crontab是用户用来设置定时任务规则的命令<blockquote>
@@ -267,35 +269,32 @@
 </li>
 </ul>
 </li>
-</ol>
-<ul>
 <li><p>指令的使用格式</p>
 <blockquote>
-<p>30 * * * *  /bin/bash /tmp/echo.sh</p>
+<p>30 * * * *  &#x2F;bin&#x2F;bash &#x2F;tmp&#x2F;echo.sh</p>
 </blockquote>
-<p> Example of job definition:<br>.—————- minute (0 - 59)<br>|  .————- hour (0 - 23)<br>|  |  .———- day of month (1 - 31)<br>|  |  |  .——- month (1 - 12) OR jan,feb,mar,apr …<br>|  |  |  |  .—- day of week (0 - 6) (Sunday=0 or 7) OR     sun,mon,tue,wed,thu,fri,sat<br>|  |  |  |  |<br>*  *  *  *  * user-name  command to be executed  </p>
-</li>
-</ul>
+<p>  Example of job definition:<br> .—————- minute (0 - 59)<br> |  .————- hour (0 - 23)<br> |  |  .———- day of month (1 - 31)<br> |  |  |  .——- month (1 - 12) OR jan,feb,mar,apr …<br> |  |  |  |  .—- day of week (0 - 6) (Sunday&#x3D;0 or 7) OR 	sun,mon,tue,wed,thu,fri,sat<br> |  |  |  |  |<br> *  *  *  *  * user-name  command to be executed  </p>
 </li>
 <li><p>符号</p>
 <ul>
 <li>*  任意时间都</li>
 <li><ul>
-<li>表示范围 </li>
+<li>表示范围</li>
 </ul>
 </li>
 <li>， 表示并列</li>
-<li>*/num 每隔num            </li>
+<li>*&#x2F;num 每隔num</li>
 </ul>
+<p>	        </p>
 </li>
 <li><p>文件位置</p>
 <blockquote>
-<p>/var/spool/cron/root</p>
+<p>&#x2F;var&#x2F;spool&#x2F;cron&#x2F;root</p>
 </blockquote>
 </li>
 <li><p>标准输出 和 标准错误输出的三种写法</p>
 <blockquote>
-<p>/dev/null 2&gt;&amp;1<br>1&gt;/dev/null 2&gt;/dev/null<br>$&gt;/dev/null </p>
+<p>&#x2F;dev&#x2F;null 2&gt;&amp;1<br>1&gt;&#x2F;dev&#x2F;null 2&gt;&#x2F;dev&#x2F;null<br>$&gt;&#x2F;dev&#x2F;null</p>
 </blockquote>
 </li>
 </ul>

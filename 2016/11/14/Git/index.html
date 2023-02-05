@@ -29,7 +29,7 @@
 <meta property="og:locale">
 <meta property="og:image" content="http://7xthfw.com1.z0.glb.clouddn.com/long_term_branch.png">
 <meta property="article:published_time" content="2016-11-14T05:47:35.000Z">
-<meta property="article:modified_time" content="2020-03-23T16:15:04.494Z">
+<meta property="article:modified_time" content="2020-03-23T16:15:04.490Z">
 <meta property="article:author" content="Tricrepe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://7xthfw.com1.z0.glb.clouddn.com/long_term_branch.png">
@@ -244,7 +244,7 @@
 
       
         <p>Git必杀技</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h1 id="Git配置"><a href="#Git配置" class="headerlink" title="Git配置"></a>Git配置</h1><ul>
 <li><code>global</code>配置文件在 <code>~/.gitconfig</code>里</li>
@@ -263,10 +263,8 @@
 <li>指定不被跟踪的文件</li>
 <li>所有空行或者以注释符号＃ 开头的行都会被Git 忽略。</li>
 <li>可以使用标准的glob 模式匹配，即shell命令行用的匹配模式</li>
-<li>匹配模式最后跟反斜杠（/）说明要忽略的是目录。</li>
-<li>要忽略指定模式以外的文件或目录，可以在模式前加上惊叹号（!）取反<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 此为注释– 将被Git 忽略# 忽略所有.a 结尾的文件*.a# 但lib.a 除外!lib.a# 仅仅忽略项目根目录下的TODO 文件，不包括subdir&#x2F;TODO&#x2F;TODO# 忽略build&#x2F; 目录下的所有文件build&#x2F;# 会忽略doc&#x2F;notes.txt 但不包括doc&#x2F;server&#x2F;arch.txtdoc&#x2F;*.txt# ignore all .txt files in the doc&#x2F; directorydoc&#x2F;**&#x2F;*.txt</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>匹配模式最后跟反斜杠（&#x2F;）说明要忽略的是目录。</li>
+<li>要忽略指定模式以外的文件或目录，可以在模式前加上惊叹号（!）取反<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 此为注释– 将被Git 忽略# 忽略所有.a 结尾的文件*.a# 但lib.a 除外!lib.a# 仅仅忽略项目根目录下的TODO 文件，不包括subdir/TODO/TODO# 忽略build/ 目录下的所有文件build/# 会忽略doc/notes.txt 但不包括doc/server/arch.txtdoc/*.txt# ignore all .txt files in the doc/ directorydoc/**/*.txt</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h2><ul>
 <li><code>git diff</code>显示<strong>当前文件</strong>状态和<strong>暂存区文件</strong>状态的差异</li>
@@ -274,7 +272,7 @@
 <li><code>git diff --staged</code> 显示<strong>暂存区文件</strong>状态和<strong>上次提交</strong>状态的差异</li>
 </ul>
 <h2 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h2><ul>
-<li>git commit 会打开默认编辑器输入 <em>**提交信息</em></li>
+<li>git commit 会打开默认编辑器输入 **<em>提交信息</em></li>
 <li>或者git commit -m “提交信息”</li>
 <li>每一次运行提交操作，都是对你项目作一次快照，以后可以回到这个状态，或<br>者进行比较</li>
 <li>git commit -a 可以Git 就会自动把所有已经跟踪过的文件暂存起来一并提交，从而跳过git add 步骤</li>
@@ -286,9 +284,7 @@
 </ol>
 <h2 id="移动和重命名"><a href="#移动和重命名" class="headerlink" title="移动和重命名"></a>移动和重命名</h2><ul>
 <li>git rm oldfile newfile</li>
-<li>相当于<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mv README.txt README$ git rm README.txt$ git add README</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>相当于<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mv README.txt README$ git rm README.txt$ git add README</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="查看历史记录"><a href="#查看历史记录" class="headerlink" title="查看历史记录"></a>查看历史记录</h2><ul>
 <li><code>git log</code></li>
@@ -296,9 +292,9 @@
 <li>如果用图形表显示 <code>git log --graph</code></li>
 <li>按条件输出日志<ol>
 <li>-(n) 仅显示最近的n 条提交</li>
-<li>–since=”2008-10-01”, –after 仅显示指定时间之后的提交。</li>
+<li>–since&#x3D;”2008-10-01”, –after 仅显示指定时间之后的提交。</li>
 <li>–until, –before 仅显示指定时间之前的提交。</li>
-<li>–author=name 仅显示指定作者相关的提交。</li>
+<li>–author&#x3D;name 仅显示指定作者相关的提交。</li>
 <li>你可以给出各种时间格式，比如说具体的某一天（“2008-01-15”），或者是多久以前（“2 years 1 day 3 minutes ago”）。</li>
 <li>还可以给出若干搜索条件，列出符合的提交。用–author 选项显示指定作者的提交，用–grep 选项搜索提交说明中的关键字。（请注意，如果要得到同时满足这两个选项搜索条件的提交，就必须用–all-match 选项。否则，满足任意一个条件的提交都会被匹配出来）</li>
 </ol>
@@ -339,7 +335,9 @@
 <li><code>git remote rm remote-name</code> 删除</li>
 </ul>
 <h2 id="tag"><a href="#tag" class="headerlink" title="tag"></a>tag</h2><ul>
-<li>标签主要是用来在某次提交后，给文件打个记号，注明版本号，方便版本管理和查找<h3 id="查看已有标签"><a href="#查看已有标签" class="headerlink" title="查看已有标签"></a>查看已有标签</h3></li>
+<li>标签主要是用来在某次提交后，给文件打个记号，注明版本号，方便版本管理和查找</li>
+</ul>
+<h3 id="查看已有标签"><a href="#查看已有标签" class="headerlink" title="查看已有标签"></a>查看已有标签</h3><ul>
 <li><code>git tag</code></li>
 </ul>
 <h3 id="添加标签"><a href="#添加标签" class="headerlink" title="添加标签"></a>添加标签</h3><ul>
@@ -393,8 +391,8 @@
 <ol>
 <li>假设团队有个地址为git.ourcompany.com 的Git 服务器，上面有一些项目开发之前公用的lib</li>
 <li>你用git clone的方式把服务器上的东西抓取到本地</li>
-<li>这时候你的文件家里有两个指针，一个指向本地的master分支，另一个指向远程的origin/master分支, 只是项目刚开始，两个分支指向同一个地方</li>
-<li>随着本地项目的进行和提交（还未push数据到远程），master分支在前进，origin/master指针还停留在原地（假设还没有其他人更新远程服务器）</li>
+<li>这时候你的文件家里有两个指针，一个指向本地的master分支，另一个指向远程的origin&#x2F;master分支, 只是项目刚开始，两个分支指向同一个地方</li>
+<li>随着本地项目的进行和提交（还未push数据到远程），master分支在前进，origin&#x2F;master指针还停留在原地（假设还没有其他人更新远程服务器）</li>
 <li>可以用<code>git log origin/master</code>，查看远程的提交</li>
 <li>可以用<code>git log -p master..origin/master</code>或者<code>git diff master origin/master</code>查看两个分支的区别</li>
 </ol>
@@ -425,7 +423,7 @@
 </li>
 <li><p>每次提交应该限定完成一次逻辑功能，尽可能多分解成小的提交，便于别人理解，如果一次完成了很多工作，忘记提交了，可以用git add –patch处理</p>
 </li>
-<li><p>提交说明 参照git://git.kernel.org/pub/scm/git/git.git里的</p>
+<li><p>提交说明 参照git:&#x2F;&#x2F;git.kernel.org&#x2F;pub&#x2F;scm&#x2F;git&#x2F;git.git里的</p>
 </li>
 </ul>
 <h1 id="Git工具"><a href="#Git工具" class="headerlink" title="Git工具"></a>Git工具</h1><h2 id="查看引用日志"><a href="#查看引用日志" class="headerlink" title="查看引用日志"></a>查看引用日志</h2><ul>
@@ -438,16 +436,16 @@
 </ul>
 <h2 id="双点定位"><a href="#双点定位" class="headerlink" title="双点定位"></a>双点定位</h2><ul>
 <li><code>git log master..experiment</code>这句话的意思是“所有可从 experiment 分支中获得而不能从 master 分 支中获得的提交</li>
-<li>比较常用的是<code>git log origin/master..HEAD</code> 显示任何在你当前分支上而不在远程 origin 上的提交。如果你运行 git push 并且的你 的当前分支正在跟踪 origin/master， 被 git log origin/master..HEAD 列出的提交就是将被传输到服务器上的提交</li>
+<li>比较常用的是<code>git log origin/master..HEAD</code> 显示任何在你当前分支上而不在远程 origin 上的提交。如果你运行 git push 并且的你 的当前分支正在跟踪 origin&#x2F;master， 被 git log origin&#x2F;master..HEAD 列出的提交就是将被传输到服务器上的提交</li>
 <li><code>git log refA..refB</code>的等价写法<code>git log ^refA refB</code>，<code>git log refB --not refA</code> 后两个的语法也适合多点定位，例如<code>git log refA refB ^refC</code>,<code>git log refA refB --not refC</code></li>
 </ul>
 <h2 id="stash"><a href="#stash" class="headerlink" title="stash"></a>stash</h2><ul>
 <li>如果在一个分支下的工作还没有达到提交的标准，这时候必须跳转到另一个分支完成工作，需要将现有的暂存起来</li>
 <li><code>git stash</code>会将现有的工作往堆栈推送一个贮藏</li>
 <li>用<code>git stash list</code>可以查看所有的贮藏</li>
-<li><code>git stash apply</code>可以将最近一次的贮藏调会工作目录，<code>git stash apply stash@{n}</code>可以调回更早的贮藏</li>
+<li><code>git stash apply</code>可以将最近一次的贮藏调会工作目录，<code>git stash apply stash@&#123;n&#125;</code>可以调回更早的贮藏</li>
 <li>也可以在其他分支调用贮藏</li>
-<li>如果想移除某个贮藏 就要用<code>git stash drop stash@{n}</code></li>
+<li>如果想移除某个贮藏 就要用<code>git stash drop stash@&#123;n&#125;</code></li>
 <li>从贮藏去恢复过来的文件，默认都回到了不暂存区，如果贮藏之前有暂存的文件，想要恢复之前‘暂存的归暂存，不暂存的归不暂存’，就要用<code>git stash --index</code></li>
 <li><code>git stash pop</code> 来重新应用储藏，同时立刻将其从堆栈中移走。</li>
 </ul>

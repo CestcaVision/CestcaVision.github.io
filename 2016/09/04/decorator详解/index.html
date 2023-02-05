@@ -233,53 +233,31 @@
 
       
         <p>之前在《Python基础》提过一下decorator, 这次深入探讨和研究一下</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <ul>
 <li><p>decorator本质上就是一个高阶函数，他接受一个函数作为参数，返回一个新函数</p>
 </li>
-<li><p>python中decorator用<strong>@</strong> 语法，可以避免使用手动编写f=decorate()</p>
+<li><p>python中decorator用**@** 语法，可以避免使用手动编写f&#x3D;decorate()</p>
 </li>
-<li><p>写一个日志装饰器<br>  def log(f):</p>
-<pre><code>def fn(x):
-    print(&quot;call&quot;+f.__name__+&quot;()...&quot;)
-    return f(x)
-return fn </code></pre></li>
-<li><p>应用日志装饰器<br>  @log<br>  def factorial(n):</p>
-<pre><code>return reduce(lambda x,y:x*y,range(1,n+1))</code></pre><p>  print(factorial(10))</p>
+<li><p>写一个日志装饰器<br>  def log(f):<br>  def fn(x):<br>      print(“call”+f.<strong>name</strong>+”()…”)<br>      return f(x)<br>  return fn </p>
+</li>
+<li><p>应用日志装饰器<br>  @log<br>  def factorial(n):<br>  return reduce(lambda x,y:x*y,range(1,n+1))<br>  print(factorial(10))</p>
 </li>
 <li><p>运行结果<br>  call factorial()…<br>  3628800</p>
 </li>
-<li><p>注意： fn的参数个数，要和之后f的参数个数相同，如果保证任意参数正常调用，使用*args 和**kw<br>  def log(f):</p>
-<pre><code>def fn(\*args,\*\*kw):
-    print(&quot;call&quot;+f.__name__+&quot;()...&quot;)
-    return f(\*args,\*\*kw)
-return fn</code></pre></li>
-<li><p>练习：打印函数的调用时间<br>  def performance(f):</p>
-<pre><code>def fn(\*args,\*\*kw):
-    print(&quot;call &quot;+f.__name__+&quot;()...at&quot;+time.asctime()) 
-    return f(\*args,\*\*kw)
-return fn</code></pre><p>  @ performance<br>  def addTwo(x,y):</p>
-<pre><code>return x+y</code></pre><p>  print(addTwo(1,4))<br>  call addTwo()…atSun Sep  4 14:20:19 2016<br>  7</p>
+<li><p>注意： fn的参数个数，要和之后f的参数个数相同，如果保证任意参数正常调用，使用*args 和**kw<br>  def log(f):<br>  def fn(*args,**kw):<br>      print(“call”+f.<strong>name</strong>+”()…”)<br>      return f(*args,**kw)<br>  return fn
+  </p>
+</li>
+<li><p>练习：打印函数的调用时间<br>  def performance(f):<br>  def fn(*args,**kw):<br>      print(“call “+f.<strong>name</strong>+”()…at”+time.asctime())<br>      return f(*args,**kw)<br>  return fn<br><br>  @ performance<br>  def addTwo(x,y):<br>  return x+y<br><br>  print(addTwo(1,4))<br>  call addTwo()…atSun Sep  4 14:20:19 2016<br>  7</p>
 </li>
 <li><p>带参数的decorator</p>
 <ul>
 <li>原理很简单，就是在标准的decorator外面再包裹一个函数，最后返回decorator本身</li>
 </ul>
 </li>
-<li><p>练习：带参数的decorator<br>  import time<br>  def performance(unit):</p>
-<pre><code>def decorator(f):
-    def fn(\*args,\*\*kw):
-        start = time.clock()
-        if unit==&quot;ms&quot;:
-            print(&quot;call %s using %f ms&quot;%(f.__name__,(time.clock()-start)*1000))
-        elif unit==&quot;s&quot;:
-            print(&quot;call %s using %f s&quot;%(f.__name__,time.clock()-start))
-        else:
-            print(unit +&quot;is a unavailable unit&quot;)
-        return f(\*args,\*\*kw)
-    return fn
-return decorator</code></pre></li>
+<li><p>练习：带参数的decorator<br>  import time<br>  def performance(unit):<br>  def decorator(f):<br>      def fn(*args,**kw):<br>          start &#x3D; time.clock()<br>          if unit&#x3D;&#x3D;”ms”:<br>              print(“call %s using %f ms”%(f.<strong>name</strong>,(time.clock()-start)*1000))<br>          elif unit&#x3D;&#x3D;”s”:<br>              print(“call %s using %f s”%(f.<strong>name</strong>,time.clock()-start))<br>          else:<br>              print(unit +”is a unavailable unit”)<br>          return f(*args,**kw)<br>      return fn<br>  return decorator</p>
+</li>
 </ul>
 
     </div>

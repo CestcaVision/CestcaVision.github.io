@@ -242,18 +242,18 @@
 
       
         <p>用canvas写几个小游戏，训练面向对象编程</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><h2 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h2><p><code>&lt;canvas width=&quot;800&quot; height=&quot;600&quot;&gt;&lt;/canvas&gt;</code></p>
 <ul>
 <li>注意 width和height是canvas的自有属性，不是style下的属性</li>
 <li>用JS在canvas上作画的基本步骤<ol>
 <li>获取canvas节点<blockquote>
-<p>var canvas = document.getElementById(“canvas”)</p>
+<p>var canvas &#x3D; document.getElementById(“canvas”)</p>
 </blockquote>
 </li>
 <li>设置上下文<blockquote>
-<p>var ctx = canvas.getContext(“2d”)</p>
+<p>var ctx &#x3D; canvas.getContext(“2d”)</p>
 </blockquote>
 </li>
 <li>描述图形<blockquote>
@@ -268,15 +268,15 @@
 <li>基本形状是直线、矩形、弧（圆形曲线，贝塞尔曲线）</li>
 </ul>
 <h3 id="直线"><a href="#直线" class="headerlink" title="直线"></a>直线</h3><ol>
-<li>ctx.beginPath()    // 开始画线 </li>
-<li>ctx.moveTo(100,100)    //移动到一个点</li>
-<li>ctx.lineTo(200,200)   //划线，此时绘制的是一个抽象的线段</li>
-<li>ctx.stroke()          // 用描边命令才能显示</li>
-<li>ctx.closePath()       // 结束划线，将绘制的线段，封闭</li>
-<li>ctx.fill()            // 填充</li>
-<li>ctx.lineWidth = “20”  // 划线的宽度</li>
-<li>ctx.strokeStyle = “red” // 划线的颜色</li>
-<li>ctx. fillStyle = “blue”   // 填充的颜色 </li>
+<li>ctx.beginPath()    &#x2F;&#x2F; 开始画线 </li>
+<li>ctx.moveTo(100,100)    &#x2F;&#x2F;移动到一个点</li>
+<li>ctx.lineTo(200,200)   &#x2F;&#x2F;划线，此时绘制的是一个抽象的线段</li>
+<li>ctx.stroke()          &#x2F;&#x2F; 用描边命令才能显示</li>
+<li>ctx.closePath()       &#x2F;&#x2F; 结束划线，将绘制的线段，封闭</li>
+<li>ctx.fill()            &#x2F;&#x2F; 填充</li>
+<li>ctx.lineWidth &#x3D; “20”  &#x2F;&#x2F; 划线的宽度</li>
+<li>ctx.strokeStyle &#x3D; “red” &#x2F;&#x2F; 划线的颜色</li>
+<li>ctx. fillStyle &#x3D; “blue”   &#x2F;&#x2F; 填充的颜色</li>
 </ol>
 <h3 id="矩形"><a href="#矩形" class="headerlink" title="矩形"></a>矩形</h3><ul>
 <li>ctx.rect(起始点横坐标，起始点纵坐标，宽，高)</li>
@@ -290,31 +290,33 @@
 <li>drawImage(image,sx,xy,sWidth,sHeight,dx,dy,dWidth,dHeight)</li>
 <li>s 表示对于原图片的切割，d表示放在画布上的位置</li>
 <li>步骤： <ol>
-<li>var image = new Image()  // 创建一个图片对象 </li>
-<li>image.src = “images/0.jpg” // 设置src，一旦设置src, 上行请求将发出</li>
-<li>image.onload = function{ ctx. drawImage()}  //因为图片上行，draw方法异步，所以要用onload事件触发</li>
+<li>var image &#x3D; new Image()  &#x2F;&#x2F; 创建一个图片对象 </li>
+<li>image.src &#x3D; “images&#x2F;0.jpg” &#x2F;&#x2F; 设置src，一旦设置src, 上行请求将发出</li>
+<li>image.onload &#x3D; function{ ctx. drawImage()}  &#x2F;&#x2F;因为图片上行，draw方法异步，所以要用onload事件触发</li>
 </ol>
 </li>
 </ul>
-<h1 id="面向对象制作动画"><a href="#面向对象制作动画" class="headerlink" title="面向对象制作动画"></a>面向对象制作动画</h1><h2 id="用面向对象的方法写一个小球的类"><a href="#用面向对象的方法写一个小球的类" class="headerlink" title="用面向对象的方法写一个小球的类"></a>用面向对象的方法写一个小球的类</h2><pre><code>class Ball {
-    constructor(x,y,r,color,speed){
+<h1 id="面向对象制作动画"><a href="#面向对象制作动画" class="headerlink" title="面向对象制作动画"></a>面向对象制作动画</h1><h2 id="用面向对象的方法写一个小球的类"><a href="#用面向对象的方法写一个小球的类" class="headerlink" title="用面向对象的方法写一个小球的类"></a>用面向对象的方法写一个小球的类</h2><pre><code>class Ball &#123;
+    constructor(x,y,r,color,speed)&#123;
         this.x=x;
           this.y=y;
           this.r=r;
           this.color =color;
           this.speed = speed
-    }
-    update(){
+    &#125;
+    update()&#123;
       this.x += this.speed;
-    }
-    render(){
+    &#125;
+    render()&#123;
       ctx.beginPath();
       ctx.arc(this.x,this.y,this.r,0,2*Math.PI,true);
       ctx.fillStyle = this.color;
       ctx.fill();
       ctx.closePath();
-    }
-}</code></pre><ul>
+    &#125;
+&#125;
+</code></pre>
+<ul>
 <li>定义了小球的大小，颜色，移动速度，还有生成小球，小球移动的方法</li>
 </ul>
 <h2 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h2><ul>
@@ -325,11 +327,9 @@
 <li>渲染小球</li>
 </ol>
 </li>
-<li>结合<code>定时器</code>把这三个步骤完成<br>  setInterval(function(){<pre><code>  ctx.clearRect(0,0,canvas.width,canvas.height);
-  b1.update();
-  b1.render();
-},10)    </code></pre></li>
+<li>结合<code>定时器</code>把这三个步骤完成<br>  setInterval(function(){<br>  ctx.clearRect(0,0,canvas.width,canvas.height);<br>  b1.update();<br>  b1.render();<br>},10)</li>
 </ul>
+<p>	</p>
 
     </div>
 

@@ -242,13 +242,13 @@
 
       
         <p>nodejs 学习笔记</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h1 id="nodejs特点"><a href="#nodejs特点" class="headerlink" title="nodejs特点"></a>nodejs特点</h1><h2 id="单线程"><a href="#单线程" class="headerlink" title="单线程"></a>单线程</h2><ol>
 <li>java, php或.net等服务器语言，每个客户端创建一个新的线程，都要耗费2M内存，而nodejs仅仅使用一个线程。</li>
 <li>单线程也能造成宏观上的并发</li>
 </ol>
-<p>##非阻塞I/O<br>当某个IO执行完毕时，将以时间的形式通知执行IO操作的线程，线程执行这个事件的回调函数，为了处理异步IO，线程必须有事件循环，不断检查有没有未处理的事件，依次予以处理。</p>
+<p>##非阻塞I&#x2F;O<br>当某个IO执行完毕时，将以时间的形式通知执行IO操作的线程，线程执行这个事件的回调函数，为了处理异步IO，线程必须有事件循环，不断检查有没有未处理的事件，依次予以处理。</p>
 <p>##事件驱动<br>事件分配，nodejs底层代码，近半数都用于事件队列、回调函数队列构建<br>不管是新用户请求，还是老用户IO完成，都将以事件方式键入事件环，等待调度</p>
 <p>##适合开发什么<br>适合IO，不适合计算<br>用户表单收集<br>考试系统<br>聊天室（长连接）</p>
 <ul>
@@ -258,20 +258,8 @@
 <li>url.parse如果第二个参数是true，就可以将所有的查询变成字符串，就可以打点得到这个参数.</li>
 </ul>
 <h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><h2 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h2><ul>
-<li>Node约定，如果某个函数需要回调函数作为参数，则回调函数是最后一个参数。<pre><code>var isTrue = function(value, callback) {
-      if (value === true) {
-        callback(null, &quot;Value was true.&quot;);
-      }
-      else {
-        callback(new Error(&quot;Value is not true!&quot;));
-      }
-}</code></pre></li>
-<li>另外，回调函数本身的第一个参数，约定为上一步传入的错误对象。<pre><code>var callback = function(error,value){
-    if(error){
-        return console.log(error);
-    }
-    console.log(value)
-}</code></pre></li>
+<li>Node约定，如果某个函数需要回调函数作为参数，则回调函数是最后一个参数。<br>  var isTrue &#x3D; function(value, callback) {<br>        if (value &#x3D;&#x3D;&#x3D; true) {<br>          callback(null, “Value was true.”);<br>        }<br>        else {<br>          callback(new Error(“Value is not true!”));<br>        }<br>  }</li>
+<li>另外，回调函数本身的第一个参数，约定为上一步传入的错误对象。<br>  var callback &#x3D; function(error,value){<br>      if(error){<br>          return console.log(error);<br>      }<br>      console.log(value)<br>  }</li>
 <li>callback函数第一个参数是err的原因是，因为执行异步，前期操作的错误无法被try catch 语句检测到</li>
 </ul>
 <h2 id="全局对象和全局变量"><a href="#全局对象和全局变量" class="headerlink" title="全局对象和全局变量"></a>全局对象和全局变量</h2><h3 id="全局对象"><a href="#全局对象" class="headerlink" title="全局对象"></a>全局对象</h3><ul>
@@ -292,7 +280,7 @@
 <li>__dirname  指向当前运行脚本所在目录</li>
 </ul>
 <h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><blockquote>
-<p>var circle = require(‘./circle’)  //包含路径的情况<br>var http = require(‘http’)  // 不包含路径的情况，去node的安装目录里找</p>
+<p>var circle &#x3D; require(‘.&#x2F;circle’)  &#x2F;&#x2F;包含路径的情况<br>var http &#x3D; require(‘http’)  &#x2F;&#x2F; 不包含路径的情况，去node的安装目录里找</p>
 </blockquote>
 <ul>
 <li>导入模块其实就是导入js文件</li>

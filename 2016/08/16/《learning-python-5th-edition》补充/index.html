@@ -244,83 +244,66 @@
 
       
         <p>读《python手册5》的一些补充</p>
-<a id="more"></a>
+<span id="more"></span>
 <h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h2 id="字符串的位"><a href="#字符串的位" class="headerlink" title="字符串的位"></a>字符串的位</h2><p><img src="http://7xthfw.com1.z0.glb.clouddn.com/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E4%BD%8D.png" alt="字符串的位"></p>
 <h2 id="字符串生成（-）"><a href="#字符串生成（-）" class="headerlink" title="字符串生成（%）"></a>字符串生成（%）</h2><blockquote>
-<p>“%s is a %s” % (‘apple’,’fruit’)    # 后面接元组，也可直接跟元组名称<br>“%(category)s is a %(serie)s” % {‘category’:’apple’,’serie’:’fruit’}    # 后面接字典，也可直接跟字典名称<br>x = 1.23456789<br>‘%e | %f | %g’ % (x, x, x)<br>‘1.234568e+00 | 1.234568 | 1.23457’<br>‘%−6.2f | %05.2f | %+06.1f’ % (x, x, x)   # -6表示占6位，左对齐<br>‘1.23 | 01.23 | +001.2’<br>‘%f, %.2f, %.<em>f’ % (1/3.0, 1/3.0, 4, 1/3.0)  # \</em>号表示在后面括号里赋值<br>‘0.333333, 0.33, 0.3333’</p>
+<p>“%s is a %s” % (‘apple’,’fruit’)    # 后面接元组，也可直接跟元组名称<br>“%(category)s is a %(serie)s” % {‘category’:’apple’,’serie’:’fruit’}    # 后面接字典，也可直接跟字典名称<br>x &#x3D; 1.23456789<br>‘%e | %f | %g’ % (x, x, x)<br>‘1.234568e+00 | 1.234568 | 1.23457’<br>‘%−6.2f | %05.2f | %+06.1f’ % (x, x, x)   # -6表示占6位，左对齐<br>‘1.23 | 01.23 | +001.2’<br>‘%f, %.2f, %.*f’ % (1&#x2F;3.0, 1&#x2F;3.0, 4, 1&#x2F;3.0)  # *号表示在后面括号里赋值<br>‘0.333333, 0.33, 0.3333’</p>
 </blockquote>
 <h2 id="字符串生成（format）"><a href="#字符串生成（format）" class="headerlink" title="字符串生成（format）"></a>字符串生成（format）</h2><blockquote>
-<p>template = ‘{0}, {1} and {2}’<br>template.format(‘spam’, ‘ham’, ‘eggs’)<br>‘spam, ham and eggs’</p>
+<p>template &#x3D; ‘{0}, {1} and {2}’<br>template.format(‘spam’, ‘ham’, ‘eggs’)<br>‘spam, ham and eggs’</p>
 </blockquote>
 <blockquote>
-<p>template = ‘{motto}, {pork} and {food}’<br>template.format(motto=’spam’, pork=’ham’, food=’eggs’)<br>‘spam, ham and eggs’</p>
+<p>template &#x3D; ‘{motto}, {pork} and {food}’<br>template.format(motto&#x3D;’spam’, pork&#x3D;’ham’, food&#x3D;’eggs’)<br>‘spam, ham and eggs’</p>
 </blockquote>
 <blockquote>
-<p>template = ‘{motto}, {0} and {food}’<br>template.format(‘ham’, motto=’spam’, food=’eggs’)<br>‘spam, ham and eggs’</p>
+<p>template &#x3D; ‘{motto}, {0} and {food}’<br>template.format(‘ham’, motto&#x3D;’spam’, food&#x3D;’eggs’)<br>‘spam, ham and eggs’</p>
 </blockquote>
 <blockquote>
-<p>template = ‘{}, {} and {}’ # By relative position<br>template.format(‘spam’, ‘ham’, ‘eggs’)<br>‘spam, ham and eggs’</p>
+<p>template &#x3D; ‘{}, {} and {}’ # By relative position<br>template.format(‘spam’, ‘ham’, ‘eggs’)<br>‘spam, ham and eggs’</p>
 </blockquote>
 <blockquote>
-<p>‘{0:10} = {1:10}’.format(‘spam’, 123.4567)<br>‘spam     =   123.4567’<br>‘{0:&gt;10} = {1:&lt;10}’.format(‘spam’, 123.4567)<br>‘      spam=123.4567    ‘<br>‘{0.platform:&gt;10} = {1[kind]:&lt;10}’.format(sys, dict(kind=’laptop’))<br>‘    darwin=laptop     ‘</p>
+<p>‘{0:10} &#x3D; {1:10}’.format(‘spam’, 123.4567)<br>‘spam     &#x3D;   123.4567’<br>‘{0:&gt;10} &#x3D; {1:&lt;10}’.format(‘spam’, 123.4567)<br>‘      spam&#x3D;123.4567    ‘<br>‘{0.platform:&gt;10} &#x3D; {1[kind]:&lt;10}’.format(sys, dict(kind&#x3D;’laptop’))<br>‘    darwin&#x3D;laptop     ‘</p>
 </blockquote>
 <h1 id="元组和序列"><a href="#元组和序列" class="headerlink" title="元组和序列"></a>元组和序列</h1><h2 id="定义一个有名称的元组"><a href="#定义一个有名称的元组" class="headerlink" title="定义一个有名称的元组"></a>定义一个有名称的元组</h2><blockquote>
-<p>from collections import namedtuple<br>Red = namedtuple(‘blue’,[‘name’,’age’,’jobs’])<br>red = Red(‘Bob’,40.5,[‘dev’,’mgr’])<br>red<br>blue(name=’Bob’, age=40.5, jobs=[‘dev’, ‘mgr’])</p>
+<p>from collections import namedtuple<br>Red &#x3D; namedtuple(‘blue’,[‘name’,’age’,’jobs’])<br>red &#x3D; Red(‘Bob’,40.5,[‘dev’,’mgr’])<br>red<br>blue(name&#x3D;’Bob’, age&#x3D;40.5, jobs&#x3D;[‘dev’, ‘mgr’])</p>
 </blockquote>
 <h2 id="可执行对象"><a href="#可执行对象" class="headerlink" title="可执行对象"></a>可执行对象</h2><ul>
 <li><p>eval()可以讲字符串转化为可执行对象</p>
 </li>
-<li><p>pickle模块 将对象直接存储到文件中并读取,通过pickle.dump()和pickle.load()两个函数</p>
-<pre><code>D = {&apos;a&apos;: 1, &apos;b&apos;: 2}
-F = open(&apos;datafile.pkl&apos;, &apos;wb&apos;)
-import pickle
-  pickle.dump(D, F) 
-F.close()
-F = open(&apos;datafile.pkl&apos;, &apos;rb&apos;)
-E = pickle.load(F) 
-  E
-{&apos;a&apos;: 1, &apos;b&apos;: 2} </code></pre></li>
-<li><p>对象和JSON的转换</p>
-<pre><code>rec
-{&apos;job&apos;: [&apos;dev&apos;, &apos;mgr&apos;], &apos;name&apos;: {&apos;last&apos;: &apos;Smith&apos;, &apos;first&apos;: &apos;Bob&apos;}, &apos;age&apos;: 40.5}       
-import json
-json.dumps(rec)
-&apos;{&quot;job&quot;: [&quot;dev&quot;, &quot;mgr&quot;], &quot;name&quot;: {&quot;last&quot;: &quot;Smith&quot;, &quot;first&quot;: &quot;Bob&quot;}, &quot;age&quot;: 40.5}&apos;
-S = json.dumps(rec)
-S
-&apos;{&quot;job&quot;: [&quot;dev&quot;, &quot;mgr&quot;], &quot;name&quot;: {&quot;last&quot;: &quot;Smith&quot;, &quot;first&quot;: &quot;Bob&quot;}, &quot;age&quot;: 40.5}&apos;
-O = json.loads(S)
-O
-{&apos;job&apos;: [&apos;dev&apos;, &apos;mgr&apos;], &apos;name&apos;: {&apos;last&apos;: &apos;Smith&apos;, &apos;first&apos;: &apos;Bob&apos;}, &apos;age&apos;: 40.5}</code></pre></li>
-<li><p>把对象以JSON形式从到文件中并读取</p>
-<pre><code>json.dump(rec, fp=open(&apos;testjson.txt&apos;, &apos;w&apos;), indent=4) \# indent表示缩进
-print(open(&apos;testjson.txt&apos;).read())</code></pre></li>
+<li><p>pickle模块 将对象直接存储到文件中并读取,通过pickle.dump()和pickle.load()两个函数<br>D &#x3D; {‘a’: 1, ‘b’: 2}<br>F &#x3D; open(‘datafile.pkl’, ‘wb’)<br>import pickle<br>  pickle.dump(D, F)<br>F.close()<br>F &#x3D; open(‘datafile.pkl’, ‘rb’)<br>E &#x3D; pickle.load(F)<br>  E<br>{‘a’: 1, ‘b’: 2} </p>
+</li>
+<li><p>对象和JSON的转换<br>rec<br>{‘job’: [‘dev’, ‘mgr’], ‘name’: {‘last’: ‘Smith’, ‘first’: ‘Bob’}, ‘age’: 40.5} 	<br>import json<br>json.dumps(rec)<br>‘{“job”: [“dev”, “mgr”], “name”: {“last”: “Smith”, “first”: “Bob”}, “age”: 40.5}’<br>S &#x3D; json.dumps(rec)<br>S<br>‘{“job”: [“dev”, “mgr”], “name”: {“last”: “Smith”, “first”: “Bob”}, “age”: 40.5}’<br>O &#x3D; json.loads(S)<br>O<br>{‘job’: [‘dev’, ‘mgr’], ‘name’: {‘last’: ‘Smith’, ‘first’: ‘Bob’}, ‘age’: 40.5}</p>
+</li>
+<li><p>把对象以JSON形式从到文件中并读取<br>json.dump(rec, fp&#x3D;open(‘testjson.txt’, ‘w’), indent&#x3D;4) # indent表示缩进<br>print(open(‘testjson.txt’).read())</p>
+</li>
 </ul>
 <h2 id="赋值、浅拷贝、深拷贝"><a href="#赋值、浅拷贝、深拷贝" class="headerlink" title="赋值、浅拷贝、深拷贝"></a>赋值、浅拷贝、深拷贝</h2><pre><code>import copy
-new  = [23,44,122,[&apos;a&apos;,&apos;b&apos;]]
+new  = [23,44,122,[&#39;a&#39;,&#39;b&#39;]]
 new2 = new
 newcopy = copy.copy(new)
 newdeepcopy = copy.deepcopy(new)
 new.append(0)
-new[3].append(&apos;c&apos;)
+new[3].append(&#39;c&#39;)
 print(new)
-[23, 44, 122, [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;], 0]
+[23, 44, 122, [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;], 0]
 print(new2)
-[23, 44, 122, [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;], 0]
+[23, 44, 122, [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;], 0]
 print(newcopy)
-[23, 44, 122, [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]]
+[23, 44, 122, [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]]
 print(newdeepcopy)
-[23, 44, 122, [&apos;a&apos;, &apos;b&apos;]]</code></pre><ul>
+[23, 44, 122, [&#39;a&#39;, &#39;b&#39;]]
+</code></pre>
+<ul>
 <li>赋值是完全相同的对象</li>
 <li>copy.copy是复制一个新容器，但容器里的对象指向原来的对象</li>
 <li>copy.deepcopy 复制一个新容器，占用空间生成新的容器对象</li>
 </ul>
 <h1 id="表达式和语句"><a href="#表达式和语句" class="headerlink" title="表达式和语句"></a>表达式和语句</h1><h2 id="python3-X的print"><a href="#python3-X的print" class="headerlink" title="python3.X的print"></a>python3.X的print</h2><blockquote>
-<p>print([object, …][, sep=’ ‘][, end=’\n’][, file=sys.stdout][, flush=False])</p>
+<p>print([object, …][, sep&#x3D;’ ‘][, end&#x3D;’\n’][, file&#x3D;sys.stdout][, flush&#x3D;False])</p>
 </blockquote>
 <ul>
 <li>sep 的值为打印对象间 插入的 字符串</li>
-<li>file 后面接 导出的文件 如 file= open(‘output.txt’,’w’)</li>
+<li>file 后面接 导出的文件 如 file&#x3D; open(‘output.txt’,’w’)</li>
 <li>flush取决于file，如果file确定，flush的值就为真</li>
 </ul>
 

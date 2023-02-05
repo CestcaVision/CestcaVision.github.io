@@ -242,34 +242,29 @@
 
       
         <p>之前JS没学好，现在重新捋一遍</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h1 id="ES6新功能"><a href="#ES6新功能" class="headerlink" title="ES6新功能"></a>ES6新功能</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><h3 id="let"><a href="#let" class="headerlink" title="let"></a>let</h3><ul>
 <li>声明块级作用域的变量</li>
-<li>var 声明，在for循环等语句块中，无法定义具有局部作用域的变量<pre><code>function foo(){
-    for (var i=0;i&lt;100;i++){
-    }    
-    i += 100 // 仍然可以引用变量i
-}</code></pre></li>
-<li>let声明，就可以创造出真正的块级作用域<pre><code>function foo(){
-    for (let i=0;i&lt;100;i++){
-        sum += i;
-    }
-    i+=1; // SyntaxError
-}</code></pre></li>
+<li>var 声明，在for循环等语句块中，无法定义具有局部作用域的变量<br>  function foo(){<br>      for (var i&#x3D;0;i&lt;100;i++){<br>      }	<br>      i +&#x3D; 100 &#x2F;&#x2F; 仍然可以引用变量i<br>  }</li>
+<li>let声明，就可以创造出真正的块级作用域<br>  function foo(){<br>      for (let i&#x3D;0;i&lt;100;i++){<br>          sum +&#x3D; i;<br>      }<br>      i+&#x3D;1; &#x2F;&#x2F; SyntaxError<br>  }</li>
 </ul>
 <h3 id="const"><a href="#const" class="headerlink" title="const"></a>const</h3><ul>
 <li>不能定义两次const变量, 如果变量是数组，可以更改变量的内容，但仍不可以重新定义</li>
 </ul>
-<h2 id="解构"><a href="#解构" class="headerlink" title="解构"></a>解构</h2><h3 id="解构数组"><a href="#解构数组" class="headerlink" title="解构数组"></a>解构数组</h3><pre><code>function breakfast(){
+<h2 id="解构"><a href="#解构" class="headerlink" title="解构"></a>解构</h2><h3 id="解构数组"><a href="#解构数组" class="headerlink" title="解构数组"></a>解构数组</h3><pre><code>function breakfast()&#123;
     return [&quot;cake&quot;,&quot;tea&quot;,&quot;apple&quot;]
-}
+&#125;
 let [dessert,drink,fruit]=breakfast();
-console.log(dessert,drink,fruit);</code></pre><h3 id="解构对象"><a href="#解构对象" class="headerlink" title="解构对象"></a>解构对象</h3><pre><code>function breakfast(){
-    return {dessert:&quot;cake&quot;,drink:&quot;tea&quot;,fruit:&quot;apple&quot;}
-}
-let {dessert: dessert,drink: drink,fruit: fruit}=breakfast();
-console.log(dessert, drink,fruit);</code></pre><h2 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h2><ul>
+console.log(dessert,drink,fruit);
+</code></pre>
+<h3 id="解构对象"><a href="#解构对象" class="headerlink" title="解构对象"></a>解构对象</h3><pre><code>function breakfast()&#123;
+    return &#123;dessert:&quot;cake&quot;,drink:&quot;tea&quot;,fruit:&quot;apple&quot;&#125;
+&#125;
+let &#123;dessert: dessert,drink: drink,fruit: fruit&#125;=breakfast();
+console.log(dessert, drink,fruit);
+</code></pre>
+<h2 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h2><ul>
 <li>字符串前后用``括起来</li>
 <li>${var}</li>
 <li>还可以把字符串用回车切分成多行，不用\n</li>
@@ -279,24 +274,30 @@ console.log(dessert, drink,fruit);</code></pre><h2 id="模板字符串"><a href=
 <li>endsWith()</li>
 <li>includes()</li>
 </ul>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><pre><code>function breakfast(dessert=&quot;cake&quot;,drink=&quot;coffee&quot;){
-    return \`${dessert} ${drink}\`
-}</code></pre><h3 id="展开操作符…"><a href="#展开操作符…" class="headerlink" title="展开操作符…"></a>展开操作符…</h3><ul>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><pre><code>function breakfast(dessert=&quot;cake&quot;,drink=&quot;coffee&quot;)&#123;
+    return \`$&#123;dessert&#125; $&#123;drink&#125;\`
+&#125;
+</code></pre>
+<h3 id="展开操作符…"><a href="#展开操作符…" class="headerlink" title="展开操作符…"></a>展开操作符…</h3><ul>
 <li>…数组  可以将数组展开</li>
 </ul>
-<h3 id="剩余操作符…"><a href="#剩余操作符…" class="headerlink" title="剩余操作符…"></a>剩余操作符…</h3><pre><code>function breakfast(dessert,drink,...foods){
+<h3 id="剩余操作符…"><a href="#剩余操作符…" class="headerlink" title="剩余操作符…"></a>剩余操作符…</h3><pre><code>function breakfast(dessert,drink,...foods)&#123;
     console.log(dessert,drink,foods);
-}</code></pre><ul>
+&#125;
+</code></pre>
+<ul>
 <li>函数除了接受dessert,drink参数外，剩余的参数被当做叫做foods的数组</li>
 </ul>
-<h3 id="解构参数"><a href="#解构参数" class="headerlink" title="解构参数"></a>解构参数</h3><pre><code>function breakfast(dessert,drink,{location,restaurant}){
+<h3 id="解构参数"><a href="#解构参数" class="headerlink" title="解构参数"></a>解构参数</h3><pre><code>function breakfast(dessert,drink,&#123;location,restaurant&#125;)&#123;
     console.log(dessert,drink,location,restaurant)
-}
-breakfast(&quot;cake&quot;,&quot;tea&quot;,{location:&quot;LA&quot;,restaurant:&quot;Bubba Gump&quot;})</code></pre><h3 id="函数的name属性"><a href="#函数的name属性" class="headerlink" title="函数的name属性"></a>函数的name属性</h3><ul>
+&#125;
+breakfast(&quot;cake&quot;,&quot;tea&quot;,&#123;location:&quot;LA&quot;,restaurant:&quot;Bubba Gump&quot;&#125;)
+</code></pre>
+<h3 id="函数的name属性"><a href="#函数的name属性" class="headerlink" title="函数的name属性"></a>函数的name属性</h3><ul>
 <li>函数名称.name 可以得到函数的名字</li>
 </ul>
 <h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><blockquote>
-<p>let sumUp = (x,y)=&gt; x+y;</p>
+<p>let sumUp &#x3D; (x,y)&#x3D;&gt; x+y;</p>
 </blockquote>
 <ul>
 <li>如果不只是返回数据，函数体外要加上{}</li>
@@ -304,20 +305,22 @@ breakfast(&quot;cake&quot;,&quot;tea&quot;,{location:&quot;LA&quot;,restaurant:&
 </ul>
 <h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><h3 id="对象表达式"><a href="#对象表达式" class="headerlink" title="对象表达式"></a>对象表达式</h3><pre><code>let dessert = &quot;cake&quot;;
 let drink = &quot;coffee&quot;;
-let breakfast = {
+let breakfast = &#123;
     dessert,
     drink,
     breakfast()
-}
+&#125;
 // 等同于对象
-{
+&#123;
     breakfast : function(),
     dessert: &quot;cake&quot;,
     drink: &quot;coffee&quot;
-}</code></pre><h3 id="对象属性名"><a href="#对象属性名" class="headerlink" title="对象属性名"></a>对象属性名</h3><ul>
+&#125;
+</code></pre>
+<h3 id="对象属性名"><a href="#对象属性名" class="headerlink" title="对象属性名"></a>对象属性名</h3><ul>
 <li>可以用<code>.</code>来为对象添加属性</li>
 <li>如果属性包含空格，则必须用<code>[]</code>来添加属性，比如<blockquote>
-<p> food[“hot drink”] = “coffee”</p>
+<p> food[“hot drink”] &#x3D; “coffee”</p>
 </blockquote>
 </li>
 <li>还可以在<code>[]</code>内嵌入变量</li>
@@ -335,138 +338,74 @@ let breakfast = {
 </ul>
 <h3 id="Object-setPrototypeOf-方法"><a href="#Object-setPrototypeOf-方法" class="headerlink" title="Object.setPrototypeOf()方法"></a>Object.setPrototypeOf()方法</h3><ul>
 <li>创建对象以后改变对象的原型</li>
-<li>例子：<pre><code>let breakfast = {
-    getDrink(){
-        return &apos;tea&apos;;
-    }
-};
-let supper = {
-    getDrink(){
-        return &apos;beer&apos;;
-    }
-};
-let sunday = Object.create(breakfast);
-sunday.getDrink();
-// 结果为 &quot;tea&quot;
-Object.setPrototypeOf(sunday, supper);
-sunday.getDrink();
-// 结果为 &quot;beer&quot;</code></pre></li>
+<li>例子：<br>  let breakfast &#x3D; {<br>      getDrink(){<br>          return ‘tea’;<br>      }<br>  };<br>  let supper &#x3D; {<br>      getDrink(){<br>          return ‘beer’;<br>      }<br>  };<br>  let sunday &#x3D; Object.create(breakfast);<br>  sunday.getDrink();<br>  &#x2F;&#x2F; 结果为 “tea”<br>  Object.setPrototypeOf(sunday, supper);<br>  sunday.getDrink();<br>  &#x2F;&#x2F; 结果为 “beer”</li>
 </ul>
 <h3 id="proto"><a href="#proto" class="headerlink" title="__proto__"></a>__proto__</h3><ul>
 <li>可以直接为对象设定<strong>原型</strong></li>
-<li>设定方法：<pre><code>let sunday = {
-    __proto__: breakfast
-};
-sunday.__proto__ = dinner;</code></pre></li>
+<li>设定方法：<br>  let sunday &#x3D; {<br>      <strong>proto</strong>: breakfast<br>  };<br>  sunday.<strong>proto</strong> &#x3D; dinner;</li>
 </ul>
 <h3 id="super"><a href="#super" class="headerlink" title="super"></a>super</h3><ul>
-<li>得到原型对象的属性和方法<pre><code>let sunday = {
-    __proto__: breakfast,
-    getDrink(){
-        return super.getDrink()+&quot;and sunday champagne&quot;;
-    }
-}
-console.log(sunday.getDrink())
-// 返回结果 tea and sunday champagne</code></pre></li>
+<li>得到原型对象的属性和方法<br>  let sunday &#x3D; {<br>      <strong>proto</strong>: breakfast,<br>      getDrink(){<br>          return super.getDrink()+”and sunday champagne”;<br>      }<br>  }<br>  console.log(sunday.getDrink())<br>  &#x2F;&#x2F; 返回结果 tea and sunday champagne</li>
 </ul>
-<h2 id="生成器与迭代器"><a href="#生成器与迭代器" class="headerlink" title="生成器与迭代器"></a>生成器与迭代器</h2><h3 id="理解迭代器，自己写一个"><a href="#理解迭代器，自己写一个" class="headerlink" title="理解迭代器，自己写一个"></a>理解迭代器，自己写一个</h3><pre><code>function chef(foods){
+<h2 id="生成器与迭代器"><a href="#生成器与迭代器" class="headerlink" title="生成器与迭代器"></a>生成器与迭代器</h2><h3 id="理解迭代器，自己写一个"><a href="#理解迭代器，自己写一个" class="headerlink" title="理解迭代器，自己写一个"></a>理解迭代器，自己写一个</h3><pre><code>function chef(foods)&#123;
     let i = 0;
-    return {
-        next() {
+    return &#123;
+        next() &#123;
             let done = (i&gt;=foods.length);
             let value = !done ?foods[i++]:undefined
-            return {
+            return &#123;
                 value: value,
                 done: done
-            }
-        }
-    }
-}</code></pre><h3 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h3><ul>
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h3><ul>
 <li><p>function* 就声明了一个迭代器</p>
 </li>
 <li><p>yield 后面加上每次调用yield希望返回的结果</p>
 </li>
-<li><p>举例： </p>
-<pre><code>function* chef(){
-    yield &quot;tomato&quot;;
-    yield &quot;egg&quot;;
-}
-let leo = chef();
-leo.next();</code></pre></li>
-<li><p>另一种用法 </p>
-<pre><code>let chef = function* (foods){
-    for(var i=0; i&lt;foods.length;i++){
-        yield foods[i];
-    }
-}
-let leo = chef([&quot;tomato&quot;,&quot;egg&quot;])
-leo.next()</code></pre></li>
+<li><p>举例：<br>  function* chef(){<br>      yield “tomato”;<br>      yield “egg”;<br>  }<br>  let leo &#x3D; chef();<br>  leo.next();</p>
+</li>
+<li><p>另一种用法<br>  let chef &#x3D; function* (foods){<br>      for(var i&#x3D;0; i&lt;foods.length;i++){<br>          yield foods[i];<br>      }<br>  }<br>  let leo &#x3D; chef([“tomato”,”egg”])<br>  leo.next()</p>
+</li>
 </ul>
 <h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><ul>
 <li>class </li>
-<li>初始化一个类<pre><code>class Chef {
-    constructor(food){
-        this.food = food;
-    }
-    cook(){
-        console.log(this.food);
-    }
-}</code></pre></li>
+<li>初始化一个类<br>  class Chef {<br>      constructor(food){<br>          this.food &#x3D; food;<br>      }<br>      cook(){<br>          console.log(this.food);<br>      }<br>  }</li>
 </ul>
-<h3 id="get-and-set"><a href="#get-and-set" class="headerlink" title="get and set"></a>get and set</h3><pre><code>class Chef {
-    constructor(food){
+<h3 id="get-and-set"><a href="#get-and-set" class="headerlink" title="get and set"></a>get and set</h3><pre><code>class Chef &#123;
+    constructor(food)&#123;
         this.food = food;
         this.dish = [];
-    }
-    get bill(){
+    &#125;
+    get bill()&#123;
         return this.dish;
-    }
-    set menu(piece){
+    &#125;
+    set menu(piece)&#123;
         this.dish.push(piece);
-    }
-    cook(){
+    &#125;
+    cook()&#123;
         console.log(this.food);
-    }
-}
+    &#125;
+&#125;
 let leo = Chef();
 //把每道菜插入到菜单当中
 leo.menu = &quot;西红柿炒鸡蛋&quot;;
 leo.menu = &quot;宫保鸡丁&quot;;
 // 生成账单
-leo.bill </code></pre><h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><ul>
+leo.bill 
+</code></pre>
+<h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><ul>
 <li>可以让类里的方法，不需要实例化就可以使用</li>
 <li>关键字 static</li>
-<li>举例<pre><code>class Chef {
-    constructor(food){
-    this.food = food};
-    static cook(special_dish){
-        console.log(special_dish)
-    }
-}
-Chef.cook(&quot;火爆腰花&quot;)</code></pre></li>
+<li>举例<br>  class Chef {<br>      constructor(food){<br>      this.food &#x3D; food};<br>      static cook(special_dish){<br>          console.log(special_dish)<br>      }<br>  }<br>  Chef.cook(“火爆腰花”)</li>
 </ul>
 <h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><ul>
-<li><p>让一个类继承另一个类的属性和方法</p>
-</li>
-<li><p>用super 调用父类的属性</p>
-</li>
-<li><p>举例</p>
-<pre><code>class Person {
-    constructor(name,birthday){
-        this.name = name;
-        this.birthday = birthday; 
-    }
-    intro() {
-        return `我叫${this.name},我出生于${this.birthday}`
-    }
-}
-
-class Chef extends Person {
-    constructor(name,birthday){
-        super(name,birthday);
-    }
-}
-let leo = new Chef(&quot;leo&quot;,&quot;1992-3-10&quot;)</code></pre></li>
+<li>让一个类继承另一个类的属性和方法</li>
+<li>用super 调用父类的属性</li>
+<li>举例<br>  class Person {<br>      constructor(name,birthday){<br>          this.name &#x3D; name;<br>          this.birthday &#x3D; birthday;<br>      }<br>      intro() {<br>          return <code>我叫$&#123;this.name&#125;,我出生于$&#123;this.birthday&#125;</code><br>      }<br>  }<br><br>  class Chef extends Person {<br>      constructor(name,birthday){<br>          super(name,birthday);<br>      }<br>  }<br>  let leo &#x3D; new Chef(“leo”,”1992-3-10”)</li>
 </ul>
 <h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><ul>
 <li>类似数组，但不允许有重复的元素</li>
@@ -486,7 +425,7 @@ let leo = new Chef(&quot;leo&quot;,&quot;1992-3-10&quot;)</code></pre></li>
 <li>.get(key) 得到对应的值</li>
 <li>.delete(key); 删除</li>
 <li>.has(key) 判断</li>
-<li>.forEach((value,key)=&gt;{})</li>
+<li>.forEach((value,key)&#x3D;&gt;{})</li>
 <li>.clear() 清空</li>
 </ul>
 <h3 id="forEach-方法"><a href="#forEach-方法" class="headerlink" title="forEach()方法"></a>forEach()方法</h3><ul>
@@ -494,19 +433,14 @@ let leo = new Chef(&quot;leo&quot;,&quot;1992-3-10&quot;)</code></pre></li>
 </li>
 <li><p>注意参数的顺序和含义</p>
 </li>
-<li><p>数组</p>
-<pre><code>var arr = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;];
-arr.forEach((element,index,array)=&gt;{
-                console.log(element);
-                console.log(index);
-                console.log(arry)
-            })</code></pre></li>
-<li><p>集合</p>
-<pre><code>var s = new Set([&apos;a&apos;,&apos;b&apos;,&apos;c&apos;]);
-s.forEach((element,sameElement,set)=&gt;{})</code></pre></li>
-<li><p>Map</p>
-<pre><code>var m = new Map([[1,&apos;a&apos;],[2,&apos;b&apos;],[3,&apos;c&apos;]]);
-m.forEach((value,key,map)=&gt;{})</code></pre></li>
+<li><p>数组<br>  var arr &#x3D; [‘a’,’b’,’c’];<br>  arr.forEach((element,index,array)&#x3D;&gt;{<br>                  console.log(element);<br>                  console.log(index);<br>                  console.log(arry)<br>              })
+              </p>
+</li>
+<li><p>集合<br>  var s &#x3D; new Set([‘a’,’b’,’c’]);<br>  s.forEach((element,sameElement,set)&#x3D;&gt;{})
+  </p>
+</li>
+<li><p>Map<br>  var m &#x3D; new Map([[1,’a’],[2,’b’],[3,’c’]]);<br>  m.forEach((value,key,map)&#x3D;&gt;{})</p>
+</li>
 </ul>
 <h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2><ul>
 <li>导出：在js的底部export 变量或者函数</li>
@@ -524,25 +458,11 @@ m.forEach((value,key,map)=&gt;{})</code></pre></li>
 <p>export default + 默认导出的变量或函数<br>另一种写法 export {变量或函数 as default}<br>import 随便去取个名字（默认没有大括号）from ‘路径’</p>
 </blockquote>
 <h1 id="函数的补充"><a href="#函数的补充" class="headerlink" title="函数的补充"></a>函数的补充</h1><h2 id="arguments关键字"><a href="#arguments关键字" class="headerlink" title="arguments关键字"></a>arguments关键字</h2><ul>
-<li><p>指向当前函数调用者传入的所有参数</p>
-<pre><code>function foo(x) {
-    alert(x); // 10
-       for (var i=0; i&lt;arguments.length; i++) {
-    alert(arguments[i]); // 10, 20, 30
-    }
-}
-foo(10, 20, 30);</code></pre></li>
-<li><p>包括定义时，没有参数，调用时有参数的情况</p>
-<pre><code>function abs() {
-    if (arguments.length === 0) {
-        return 0;
-    }
-    for(var i=0;i&lt;arguments.length;i++){
-        var x = arguments[i];
-        console.log(x&gt;=0?x:-x)
-    }
-}
-abs(-9,10); //9,10</code></pre></li>
+<li><p>指向当前函数调用者传入的所有参数<br>  function foo(x) {<br>      alert(x); &#x2F;&#x2F; 10<br>         for (var i&#x3D;0; i&lt;arguments.length; i++) {<br>      alert(arguments[i]); &#x2F;&#x2F; 10, 20, 30<br>      }<br>  }<br>  foo(10, 20, 30);
+  </p>
+</li>
+<li><p>包括定义时，没有参数，调用时有参数的情况<br>  function abs() {<br>      if (arguments.length &#x3D;&#x3D;&#x3D; 0) {<br>          return 0;<br>      }<br>      for(var i&#x3D;0;i&lt;arguments.length;i++){<br>          var x &#x3D; arguments[i];<br>          console.log(x&gt;&#x3D;0?x:-x)<br>      }<br>  }<br>  abs(-9,10); &#x2F;&#x2F;9,10</p>
+</li>
 <li><p>arguments最常用于判断传入参数的个数，用arguments.length</p>
 </li>
 <li><p>剩余参数用function (x,y,…rest){} 处理，注意rest不是关键字，可以替换成其他变量</p>
@@ -553,19 +473,9 @@ abs(-9,10); //9,10</code></pre></li>
 </li>
 <li><p>如果函数内部嵌套另一个函数，想要在内层函数里引用this，就要在调用内层函数时把this捕获过来。</p>
 </li>
-<li><p>函数中的this还可以直接指定，用apply方法，apply有两个参数，第一个参数指定函数指向的对象，第二个参数是Array，表示函数本身的参数</p>
-<pre><code>function getAge(){
-    var y = new Date().getFullYear();
-    return y - this.birth
-}   // 这是this指向window
-
-var xiaoming = {
-    name : &quot;小明&quot;,
-    birth: 1990,
-    age: getAge
-};
-xiaoming.age();  //26
-getAge.apply(xiaoming,[]);//26, this指向xiaoming</code></pre></li>
+<li><p>函数中的this还可以直接指定，用apply方法，apply有两个参数，第一个参数指定函数指向的对象，第二个参数是Array，表示函数本身的参数<br>  function getAge(){<br>      var y &#x3D; new Date().getFullYear();<br>      return y - this.birth<br>  }   &#x2F;&#x2F; 这是this指向window<br><br>  var xiaoming &#x3D; {<br>      name : “小明”,<br>      birth: 1990,<br>      age: getAge<br>  };<br>  xiaoming.age();  &#x2F;&#x2F;26<br>  getAge.apply(xiaoming,[]);&#x2F;&#x2F;26, this指向xiaoming
+  </p>
+</li>
 <li><p>call 和 apply 的不同</p>
 <ul>
 <li>call 也可以指定函数中this的指向，</li>
@@ -578,14 +488,14 @@ getAge.apply(xiaoming,[]);//26, this指向xiaoming</code></pre></li>
 <li>创建  <code>var time = new Date()</code> </li>
 <li>Date实例几个方法<ul>
 <li>.getFullYear() </li>
-<li>.getMonth()  // 尤其注意JS里的月份是从0开始算起的</li>
+<li>.getMonth()  &#x2F;&#x2F; 尤其注意JS里的月份是从0开始算起的</li>
 <li>.getDate()</li>
-<li>.getDay()   // 周几</li>
+<li>.getDay()   &#x2F;&#x2F; 周几</li>
 <li>.getHours()  </li>
 <li>.getMinutes()</li>
 <li>.getSeconds()</li>
 <li>.getMilliseconds()</li>
-<li>.getTime()   // 实例时间到1970年1月1日0时整GMT时区的毫秒数</li>
+<li>.getTime()   &#x2F;&#x2F; 实例时间到1970年1月1日0时整GMT时区的毫秒数</li>
 </ul>
 </li>
 <li>Date 还可以自定义时间戳 <code>var time = new Date(年,月,日,时,分,秒)</code></li>
@@ -599,14 +509,14 @@ getAge.apply(xiaoming,[]);//26, this指向xiaoming</code></pre></li>
 <h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><ul>
 <li><p>创建正则表达式</p>
 <blockquote>
-<p>var rel1 = /^\d{3}-\d{3,8}$/<br>var rel2 = new RegExp(‘^\d{3}\-\d{3,8}$’)<br>注意，如果使用第二种写法，因为字符串的转义问题，字符串的两个\实际上是一个\</p>
+<p>var rel1 &#x3D; &#x2F;^\d{3}-\d{3,8}$&#x2F;<br>var rel2 &#x3D; new RegExp(‘^\d{3}\-\d{3,8}$’)<br>注意，如果使用第二种写法，因为字符串的转义问题，字符串的两个\实际上是一个\</p>
 </blockquote>
 </li>
 <li><p>验证字符串用<code>test()</code>方法，比如<code>reg1.test(&quot;010-12345&quot;)</code></p>
 </li>
 </ul>
 <h3 id="正则表达式在JS中的应用"><a href="#正则表达式在JS中的应用" class="headerlink" title="正则表达式在JS中的应用"></a>正则表达式在JS中的应用</h3><h3 id="切分字符串"><a href="#切分字符串" class="headerlink" title="切分字符串"></a>切分字符串</h3><blockquote>
-<p>‘a,b;; c  d’.split(/[\s,;]+/); // [‘a’, ‘b’, ‘c’, ‘d’];</p>
+<p>‘a,b;; c  d’.split(&#x2F;[\s,;]+&#x2F;); &#x2F;&#x2F; [‘a’, ‘b’, ‘c’, ‘d’];</p>
 </blockquote>
 <h3 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h3><ul>
 <li>用括号对正则表达式的匹配内容进行分组，用.exec()方法匹配成功后，返回一个Array, 第一个元素是匹配到的整个字符串，后面的元素是括号里匹配到的字符串</li>
@@ -614,12 +524,12 @@ getAge.apply(xiaoming,[]);//26, this指向xiaoming</code></pre></li>
 <h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><ul>
 <li>JS用来传输数据的方法</li>
 <li>序列化：可以把对象转化成JSON串<ul>
-<li>JSON.stringify(对象，[筛选对象的键值]，’    ‘) </li>
+<li>JSON.stringify(对象，[筛选对象的键值]，’	‘) </li>
 <li>第二个参数还可以传入一个函数，对每个键值对进行先处理，函数的第一个参数是键，第二个参数是值</li>
 </ul>
 </li>
 <li>反序列化：把JSON串转换成相应的对象<ul>
-<li>JSON.parse(字符串，function(key,value){}) </li>
+<li>JSON.parse(字符串，function(key,value){})</li>
 </ul>
 </li>
 </ul>
