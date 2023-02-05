@@ -1443,6 +1443,82 @@ print(f1(),f2(),f3())
   </entry>
   <entry>
     <title>MongoDB</title>
+    <url>/2016/08/26/Mongodb/</url>
+    <content><![CDATA[<p>MongoDB的一些基本用法</p>
+<span id="more"></span>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/">官方文档</a></p>
+<ul>
+<li>brew 安装与启动<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew tap mongodb/brew</span><br><span class="line">brew install mongodb-community</span><br><span class="line">brew services start mongodb-community</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="mongo-shell"><a href="#mongo-shell" class="headerlink" title="mongo shell"></a>mongo shell</h2><ul>
+<li>打开shell <blockquote>
+<p>mongo </p>
+</blockquote>
+</li>
+<li>查看当前数据库<blockquote>
+<p>db</p>
+</blockquote>
+</li>
+<li>切换数据库<blockquote>
+<p>use <database></p>
+</blockquote>
+</li>
+<li>退出<blockquote>
+<p>exit</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="增删改"><a href="#增删改" class="headerlink" title="增删改"></a>增删改</h2><h3 id="增加一个对象"><a href="#增加一个对象" class="headerlink" title="增加一个对象"></a>增加一个对象</h3><blockquote>
+<p>db.albums.insertOne({title:’夜曲’})<br>db.albums.find()<br>{ “_id” : ObjectId(“57be0d54ab7bbec91c834ce7”), “title” : “夜曲” }     <em>_id是自动赋予对象的</em></p>
+</blockquote>
+<h3 id="增加多个对象"><a href="#增加多个对象" class="headerlink" title="增加多个对象"></a>增加多个对象</h3><blockquote>
+<p>db.albums.insertMany或者insert({title:’叶惠美’},{title:’龙卷风’}]) <em>二者返回值不同</em></p>
+</blockquote>
+<h3 id="修改多个符合条件的对象"><a href="#修改多个符合条件的对象" class="headerlink" title="修改多个符合条件的对象"></a>修改多个符合条件的对象</h3><blockquote>
+<p>db.albums.updateMany({过滤器}，{$set:{artist:’周杰伦’}})</p>
+</blockquote>
+<h3 id="修改一个符合条件的对象"><a href="#修改一个符合条件的对象" class="headerlink" title="修改一个符合条件的对象"></a>修改一个符合条件的对象</h3><blockquote>
+<p>db.albums.updateOne&#x2F;update({过滤器},{$set:{artist:’周杰伦’}})</p>
+</blockquote>
+<ul>
+<li>update方法有两个参数，第一个是筛选条件，第二个是修改内容</li>
+<li>$set是操作符， 一定不要忘记</li>
+</ul>
+<h3 id="删除一个或多个文档"><a href="#删除一个或多个文档" class="headerlink" title="删除一个或多个文档"></a>删除一个或多个文档</h3><blockquote>
+<p>db.albums.remove({过滤器},true&#x2F;false)</p>
+</blockquote>
+<ul>
+<li>true 表示 只删除第一个符合条件的文档</li>
+<li>false或者默认，删除所有符合条件的文档</li>
+</ul>
+<h2 id="查询文档"><a href="#查询文档" class="headerlink" title="查询文档"></a>查询文档</h2><h3 id="基本方法"><a href="#基本方法" class="headerlink" title="基本方法"></a>基本方法</h3><blockquote>
+<p>db.movies.find({过滤器},{title:1,year:1 _id:0<em>返回结果是否包含</em>})</p>
+</blockquote>
+<h3 id="查询结果控制"><a href="#查询结果控制" class="headerlink" title="查询结果控制"></a>查询结果控制</h3><ul>
+<li>.size() 查询到的对象数</li>
+<li>.limit(N) 最多查到N个结果</li>
+<li>.skip(N) 跳过N个查询结果</li>
+<li>.sort({属性:1&#x2F;-1}) 根据某项属性对查询结果进行排序</li>
+</ul>
+<h3 id="操作符过滤"><a href="#操作符过滤" class="headerlink" title="操作符过滤"></a>操作符过滤</h3><blockquote>
+<p>db.movies.find({“rating.average”:{$gt:9.5}},{title:1,year:1,_id:0}) </p>
+</blockquote>
+<ul>
+<li>找出电影列表里评分大于9.5的电影，返回电影的标题，年份，不返回ID</li>
+<li>$gt 大于操作符</li>
+<li>$lt 小于操作符</li>
+<li>$in $nin 包含&#x2F;不包含 操作符，返回genre的值里包含 犯罪 或 剧情的电影<blockquote>
+<p>db.movies.find({genre:{$in:[“犯罪”,”剧情”]}},{title:1,year:1,_id:0})</p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>程序</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>MongoDB</title>
     <url>/2016/08/26/Mongodb-NOTE/</url>
     <content><![CDATA[<p>MongoDB的一些基本用法</p>
 <span id="more"></span>
@@ -1527,82 +1603,6 @@ print(f1(),f2(),f3())
 <li>$gt 大于操作符</li>
 <li>$lt 小于操作符</li>
 <li>$in&#x2F;$nin 包含&#x2F;不包含 操作符，返回genre的值里包含 犯罪 或 剧情的电影</li>
-</ul>
-]]></content>
-      <categories>
-        <category>程序</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>MongoDB</title>
-    <url>/2016/08/26/Mongodb/</url>
-    <content><![CDATA[<p>MongoDB的一些基本用法</p>
-<span id="more"></span>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/">官方文档</a></p>
-<ul>
-<li>brew 安装与启动<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew tap mongodb/brew</span><br><span class="line">brew install mongodb-community</span><br><span class="line">brew services start mongodb-community</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="mongo-shell"><a href="#mongo-shell" class="headerlink" title="mongo shell"></a>mongo shell</h2><ul>
-<li>打开shell <blockquote>
-<p>mongo </p>
-</blockquote>
-</li>
-<li>查看当前数据库<blockquote>
-<p>db</p>
-</blockquote>
-</li>
-<li>切换数据库<blockquote>
-<p>use <database></p>
-</blockquote>
-</li>
-<li>退出<blockquote>
-<p>exit</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="增删改"><a href="#增删改" class="headerlink" title="增删改"></a>增删改</h2><h3 id="增加一个对象"><a href="#增加一个对象" class="headerlink" title="增加一个对象"></a>增加一个对象</h3><blockquote>
-<p>db.albums.insertOne({title:’夜曲’})<br>db.albums.find()<br>{ “_id” : ObjectId(“57be0d54ab7bbec91c834ce7”), “title” : “夜曲” }     <em>_id是自动赋予对象的</em></p>
-</blockquote>
-<h3 id="增加多个对象"><a href="#增加多个对象" class="headerlink" title="增加多个对象"></a>增加多个对象</h3><blockquote>
-<p>db.albums.insertMany或者insert({title:’叶惠美’},{title:’龙卷风’}]) <em>二者返回值不同</em></p>
-</blockquote>
-<h3 id="修改多个符合条件的对象"><a href="#修改多个符合条件的对象" class="headerlink" title="修改多个符合条件的对象"></a>修改多个符合条件的对象</h3><blockquote>
-<p>db.albums.updateMany({过滤器}，{$set:{artist:’周杰伦’}})</p>
-</blockquote>
-<h3 id="修改一个符合条件的对象"><a href="#修改一个符合条件的对象" class="headerlink" title="修改一个符合条件的对象"></a>修改一个符合条件的对象</h3><blockquote>
-<p>db.albums.updateOne&#x2F;update({过滤器},{$set:{artist:’周杰伦’}})</p>
-</blockquote>
-<ul>
-<li>update方法有两个参数，第一个是筛选条件，第二个是修改内容</li>
-<li>$set是操作符， 一定不要忘记</li>
-</ul>
-<h3 id="删除一个或多个文档"><a href="#删除一个或多个文档" class="headerlink" title="删除一个或多个文档"></a>删除一个或多个文档</h3><blockquote>
-<p>db.albums.remove({过滤器},true&#x2F;false)</p>
-</blockquote>
-<ul>
-<li>true 表示 只删除第一个符合条件的文档</li>
-<li>false或者默认，删除所有符合条件的文档</li>
-</ul>
-<h2 id="查询文档"><a href="#查询文档" class="headerlink" title="查询文档"></a>查询文档</h2><h3 id="基本方法"><a href="#基本方法" class="headerlink" title="基本方法"></a>基本方法</h3><blockquote>
-<p>db.movies.find({过滤器},{title:1,year:1 _id:0<em>返回结果是否包含</em>})</p>
-</blockquote>
-<h3 id="查询结果控制"><a href="#查询结果控制" class="headerlink" title="查询结果控制"></a>查询结果控制</h3><ul>
-<li>.size() 查询到的对象数</li>
-<li>.limit(N) 最多查到N个结果</li>
-<li>.skip(N) 跳过N个查询结果</li>
-<li>.sort({属性:1&#x2F;-1}) 根据某项属性对查询结果进行排序</li>
-</ul>
-<h3 id="操作符过滤"><a href="#操作符过滤" class="headerlink" title="操作符过滤"></a>操作符过滤</h3><blockquote>
-<p>db.movies.find({“rating.average”:{$gt:9.5}},{title:1,year:1,_id:0}) </p>
-</blockquote>
-<ul>
-<li>找出电影列表里评分大于9.5的电影，返回电影的标题，年份，不返回ID</li>
-<li>$gt 大于操作符</li>
-<li>$lt 小于操作符</li>
-<li>$in $nin 包含&#x2F;不包含 操作符，返回genre的值里包含 犯罪 或 剧情的电影<blockquote>
-<p>db.movies.find({genre:{$in:[“犯罪”,”剧情”]}},{title:1,year:1,_id:0})</p>
-</blockquote>
-</li>
 </ul>
 ]]></content>
       <categories>
