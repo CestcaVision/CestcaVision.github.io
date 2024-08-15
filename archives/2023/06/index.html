@@ -20,19 +20,15 @@
     var CONFIG = {"hostname":"tricrepe.github.io","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#E9574F","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="对CSS动画一些简要的复习">
-<meta property="og:type" content="article">
-<meta property="og:title" content="CSS动画">
-<meta property="og:url" content="http://tricrepe.github.io/2016/11/10/CSS%E5%8A%A8%E7%94%BB/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Tricrepe">
+<meta property="og:url" content="http://tricrepe.github.io/archives/2023/06/index.html">
 <meta property="og:site_name" content="Tricrepe">
-<meta property="og:description" content="对CSS动画一些简要的复习">
 <meta property="og:locale">
-<meta property="article:published_time" content="2016-11-10T03:26:18.000Z">
-<meta property="article:modified_time" content="2016-11-10T05:27:04.000Z">
 <meta property="article:author" content="Tricrepe">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://tricrepe.github.io/2016/11/10/CSS%E5%8A%A8%E7%94%BB/">
+<link rel="canonical" href="http://tricrepe.github.io/archives/2023/06/">
 
 
 <script id="page-configurations">
@@ -40,11 +36,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : true
+    isPost : false
   };
 </script>
 
-  <title>CSS动画 | Tricrepe</title>
+  <title>Archive | Tricrepe</title>
   
 
 
@@ -183,129 +179,49 @@
           <div class="content">
             
 
-  <div class="posts-expand">
-      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://tricrepe.github.io/2016/11/10/CSS%E5%8A%A8%E7%94%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Tricrepe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tricrepe">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          CSS动画
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2016-11-10 11:26:18 / Modified: 13:27:04" itemprop="dateCreated datePublished" datetime="2016-11-10T11:26:18+08:00">2016-11-10</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">设计</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+  
+  <div class="post-block">
+    <div class="posts-collapse">
+      <div class="collection-title">
+        <span class="collection-header">Um..! 30 posts in total. Keep on posting.</span>
+      </div>
 
       
-        <p>对CSS动画一些简要的复习</p>
-<span id="more"></span>
-
-<h1 id="过渡"><a href="#过渡" class="headerlink" title="过渡"></a>过渡</h1><ul>
-<li><p>transition属性必须加给触发前的元素</p>
-</li>
-<li><p>transition属性各个值为：</p>
-<ol>
-<li>transition-property</li>
-<li>transition-duration</li>
-<li>transition-timing-funtion(ease in,ease out)</li>
-<li>transition-delay</li>
-</ol>
-</li>
-<li><p>如果是多属性过渡，而且过渡效果各不相同，属性的各个值就应该分开写</p>
-</li>
-</ul>
-<h1 id="变换"><a href="#变换" class="headerlink" title="变换"></a>变换</h1><h2 id="2D"><a href="#2D" class="headerlink" title="2D"></a>2D</h2><ul>
-<li>表示元素本身的变换</li>
-<li>transform-origin 表示元素变化的原点</li>
-<li>元素旋转：transform: rotate(??deg)</li>
-<li>元素位移：transform: translate(X,Y)</li>
-<li>元素变大变小： transform: scale(宽缩放比，长缩放比)</li>
-<li>元素斜切： transform: skew(水平斜切度数，垂直斜切度数)</li>
-</ul>
-<h2 id="3D"><a href="#3D" class="headerlink" title="3D"></a>3D</h2><ul>
-<li>transform: perspective(value)</li>
-<li>value越小透视感越强，value越大，透视感越弱</li>
-<li>整体变换 可以给容器定义perspective 内容定义变换，例如<br>  .container {<br>  perspective: 600px;<br>  }<br>  .item {<br>  transform: rotateX(45deg)<br>  }</li>
-</ul>
-<h1 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h1><ul>
-<li>animation之后的属性依次是</li>
-</ul>
-<ol>
-<li>animation-name</li>
-<li>animation-timing-function</li>
-<li>animation-duration</li>
-<li>animation-iteration-count: num or infinite</li>
-<li>animation-direction: normal, reverse or alternate</li>
-</ol>
-
+    <div class="collection-year">
+      <h1 class="collection-header">2023</h1>
     </div>
 
-    
-    
-    
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-      <footer class="post-footer">
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2023-06-13T21:29:41+08:00"
+              content="2023-06-13">
+          06-13
+        </time>
+      </div>
 
-        
+      <h2 class="post-title">
+          <a class="post-title-link" href="/2023/06/13/Why-Apple-Widgets/" itemprop="url">
+            <span itemprop="name">Why Apple Widgets == passenger?</span>
+          </a>
+      </h2>
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2016/10/19/%E5%8C%97%E6%AC%A7%E7%A5%9E%E8%AF%9DABC/" rel="prev" title="北欧神话ABC">
-      <i class="fa fa-chevron-left"></i> 北欧神话ABC
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2016/11/10/Vuejs2-0%E6%A1%86%E6%9E%B6%E7%A0%94%E7%A9%B6/" rel="next" title="Vuejs2.0框架研究">
-      Vuejs2.0框架研究 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
+    </header>
   </article>
+
+
+    </div>
+  </div>
   
   
   
 
-  </div>
+  
+
 
 
           </div>
@@ -356,7 +272,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%87%E6%B8%A1"><span class="nav-text">过渡</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%98%E6%8D%A2"><span class="nav-text">变换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2D"><span class="nav-text">2D</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3D"><span class="nav-text">3D</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E7%94%BB"><span class="nav-text">动画</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
