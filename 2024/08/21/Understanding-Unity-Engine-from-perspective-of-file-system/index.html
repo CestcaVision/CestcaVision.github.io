@@ -19,27 +19,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"cestcavision.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="MongoDB的一些基本用法">
+    <meta name="description" content="从文件系统的角度理解游戏引擎项目，更有利于项目的拓展、自定义、维护和协作">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MongoDB">
-<meta property="og:url" content="https://cestcavision.github.io/2016/08/26/Mongodb/index.html">
+<meta property="og:title" content="Understanding Unity Engine from perspective of file system">
+<meta property="og:url" content="https://cestcavision.github.io/2024/08/21/Understanding-Unity-Engine-from-perspective-of-file-system/index.html">
 <meta property="og:site_name" content="Tricrepe">
-<meta property="og:description" content="MongoDB的一些基本用法">
+<meta property="og:description" content="从文件系统的角度理解游戏引擎项目，更有利于项目的拓展、自定义、维护和协作">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2016-08-26T07:09:14.000Z">
-<meta property="article:modified_time" content="2020-03-24T06:04:01.300Z">
+<meta property="article:published_time" content="2024-08-21T03:40:15.000Z">
+<meta property="article:modified_time" content="2024-08-21T04:11:21.941Z">
 <meta property="article:author" content="Tricrepe">
+<meta property="article:tag" content="game_engine">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://cestcavision.github.io/2016/08/26/Mongodb/">
+<link rel="canonical" href="https://cestcavision.github.io/2024/08/21/Understanding-Unity-Engine-from-perspective-of-file-system/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-cn","comments":true,"permalink":"https://cestcavision.github.io/2016/08/26/Mongodb/","path":"2016/08/26/Mongodb/","title":"MongoDB"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-cn","comments":true,"permalink":"https://cestcavision.github.io/2024/08/21/Understanding-Unity-Engine-from-perspective-of-file-system/","path":"2024/08/21/Understanding-Unity-Engine-from-perspective-of-file-system/","title":"Understanding Unity Engine from perspective of file system"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>MongoDB | Tricrepe</title>
+<title>Understanding Unity Engine from perspective of file system | Tricrepe</title>
   
 
 
@@ -111,7 +112,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mongo-shell"><span class="nav-number">2.</span> <span class="nav-text">mongo shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A2%9E%E5%88%A0%E6%94%B9"><span class="nav-number">3.</span> <span class="nav-text">增删改</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.1.</span> <span class="nav-text">增加一个对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A2%9E%E5%8A%A0%E5%A4%9A%E4%B8%AA%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.2.</span> <span class="nav-text">增加多个对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%A4%9A%E4%B8%AA%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.3.</span> <span class="nav-text">修改多个符合条件的对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%80%E4%B8%AA%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.4.</span> <span class="nav-text">修改一个符合条件的对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E4%B8%80%E4%B8%AA%E6%88%96%E5%A4%9A%E4%B8%AA%E6%96%87%E6%A1%A3"><span class="nav-number">3.5.</span> <span class="nav-text">删除一个或多个文档</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%96%87%E6%A1%A3"><span class="nav-number">4.</span> <span class="nav-text">查询文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">基本方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C%E6%8E%A7%E5%88%B6"><span class="nav-number">4.2.</span> <span class="nav-text">查询结果控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%AC%A6%E8%BF%87%E6%BB%A4"><span class="nav-number">4.3.</span> <span class="nav-text">操作符过滤</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Assets"><span class="nav-number">1.</span> <span class="nav-text">Assets</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Editor"><span class="nav-number">1.1.</span> <span class="nav-text">Editor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Editor-Default-Resources"><span class="nav-number">1.2.</span> <span class="nav-text">Editor Default Resources</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gizmos"><span class="nav-number">1.3.</span> <span class="nav-text">Gizmos</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Resources"><span class="nav-number">1.4.</span> <span class="nav-text">Resources</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Standard-Assets"><span class="nav-number">1.5.</span> <span class="nav-text">Standard Assets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StreamingAssets"><span class="nav-number">1.6.</span> <span class="nav-text">StreamingAssets</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Library"><span class="nav-number">2.</span> <span class="nav-text">Library</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Packages"><span class="nav-number">3.</span> <span class="nav-text">Packages</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ProjectSettings"><span class="nav-number">4.</span> <span class="nav-text">ProjectSettings</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UserSettings"><span class="nav-number">5.</span> <span class="nav-text">UserSettings</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Temp"><span class="nav-number">6.</span> <span class="nav-text">Temp</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Logs"><span class="nav-number">7.</span> <span class="nav-text">Logs</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -175,7 +176,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-cn">
-    <link itemprop="mainEntityOfPage" href="https://cestcavision.github.io/2016/08/26/Mongodb/">
+    <link itemprop="mainEntityOfPage" href="https://cestcavision.github.io/2024/08/21/Understanding-Unity-Engine-from-perspective-of-file-system/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpeg">
@@ -188,12 +189,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="MongoDB | Tricrepe">
+      <meta itemprop="name" content="Understanding Unity Engine from perspective of file system | Tricrepe">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          MongoDB
+          Understanding Unity Engine from perspective of file system
         </h1>
 
         <div class="post-meta-container">
@@ -203,15 +204,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2016-08-26 15:09:14" itemprop="dateCreated datePublished" datetime="2016-08-26T15:09:14+08:00">2016-08-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2020-03-24 14:04:01" itemprop="dateModified" datetime="2020-03-24T14:04:01+08:00">2020-03-24</time>
+      <time title="Created: 2024-08-21 11:40:15 / Modified: 12:11:21" itemprop="dateCreated datePublished" datetime="2024-08-21T11:40:15+08:00">2024-08-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -232,74 +227,28 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>MongoDB的一些基本用法</p>
+    <div class="post-body" itemprop="articleBody"><p>从文件系统的角度理解游戏引擎项目，更有利于项目的拓展、自定义、维护和协作</p>
 <span id="more"></span>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/">官方文档</a></p>
-<ul>
-<li>brew 安装与启动<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">brew tap mongodb/brew</span><br><span class="line">brew install mongodb-community</span><br><span class="line">brew services start mongodb-community</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="mongo-shell"><a href="#mongo-shell" class="headerlink" title="mongo shell"></a>mongo shell</h2><ul>
-<li>打开shell <blockquote>
-<p>mongo </p>
-</blockquote>
-</li>
-<li>查看当前数据库<blockquote>
-<p>db</p>
-</blockquote>
-</li>
-<li>切换数据库<blockquote>
-<p>use <database></p>
-</blockquote>
-</li>
-<li>退出<blockquote>
-<p>exit</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="增删改"><a href="#增删改" class="headerlink" title="增删改"></a>增删改</h2><h3 id="增加一个对象"><a href="#增加一个对象" class="headerlink" title="增加一个对象"></a>增加一个对象</h3><blockquote>
-<p>db.albums.insertOne({title:’夜曲’})<br>db.albums.find()<br>{ “_id” : ObjectId(“57be0d54ab7bbec91c834ce7”), “title” : “夜曲” }     <em>_id是自动赋予对象的</em></p>
-</blockquote>
-<h3 id="增加多个对象"><a href="#增加多个对象" class="headerlink" title="增加多个对象"></a>增加多个对象</h3><blockquote>
-<p>db.albums.insertMany或者insert({title:’叶惠美’},{title:’龙卷风’}]) <em>二者返回值不同</em></p>
-</blockquote>
-<h3 id="修改多个符合条件的对象"><a href="#修改多个符合条件的对象" class="headerlink" title="修改多个符合条件的对象"></a>修改多个符合条件的对象</h3><blockquote>
-<p>db.albums.updateMany({过滤器}，{$set:{artist:’周杰伦’}})</p>
-</blockquote>
-<h3 id="修改一个符合条件的对象"><a href="#修改一个符合条件的对象" class="headerlink" title="修改一个符合条件的对象"></a>修改一个符合条件的对象</h3><blockquote>
-<p>db.albums.updateOne&#x2F;update({过滤器},{$set:{artist:’周杰伦’}})</p>
-</blockquote>
-<ul>
-<li>update方法有两个参数，第一个是筛选条件，第二个是修改内容</li>
-<li>$set是操作符， 一定不要忘记</li>
-</ul>
-<h3 id="删除一个或多个文档"><a href="#删除一个或多个文档" class="headerlink" title="删除一个或多个文档"></a>删除一个或多个文档</h3><blockquote>
-<p>db.albums.remove({过滤器},true&#x2F;false)</p>
-</blockquote>
-<ul>
-<li>true 表示 只删除第一个符合条件的文档</li>
-<li>false或者默认，删除所有符合条件的文档</li>
-</ul>
-<h2 id="查询文档"><a href="#查询文档" class="headerlink" title="查询文档"></a>查询文档</h2><h3 id="基本方法"><a href="#基本方法" class="headerlink" title="基本方法"></a>基本方法</h3><blockquote>
-<p>db.movies.find({过滤器},{title:1,year:1 _id:0<em>返回结果是否包含</em>})</p>
-</blockquote>
-<h3 id="查询结果控制"><a href="#查询结果控制" class="headerlink" title="查询结果控制"></a>查询结果控制</h3><ul>
-<li>.size() 查询到的对象数</li>
-<li>.limit(N) 最多查到N个结果</li>
-<li>.skip(N) 跳过N个查询结果</li>
-<li>.sort({属性:1&#x2F;-1}) 根据某项属性对查询结果进行排序</li>
-</ul>
-<h3 id="操作符过滤"><a href="#操作符过滤" class="headerlink" title="操作符过滤"></a>操作符过滤</h3><blockquote>
-<p>db.movies.find({“rating.average”:{$gt:9.5}},{title:1,year:1,_id:0}) </p>
-</blockquote>
-<ul>
-<li>找出电影列表里评分大于9.5的电影，返回电影的标题，年份，不返回ID</li>
-<li>$gt 大于操作符</li>
-<li>$lt 小于操作符</li>
-<li>$in $nin 包含&#x2F;不包含 操作符，返回genre的值里包含 犯罪 或 剧情的电影<blockquote>
-<p>db.movies.find({genre:{$in:[“犯罪”,”剧情”]}},{title:1,year:1,_id:0})</p>
-</blockquote>
-</li>
-</ul>
+<h1 id="Assets"><a href="#Assets" class="headerlink" title="Assets"></a>Assets</h1><pre><code>用来存储和重用的项目资产
+</code></pre>
+<h2 id="Editor"><a href="#Editor" class="headerlink" title="Editor"></a>Editor</h2><p>存放编辑器下使用的脚本和资源，扩展untiy编辑器使用，不会发布到应用程序中，也不会在runtime运行，Editor可以在Assets目录下多个子模块中存储多个</p>
+<h2 id="Editor-Default-Resources"><a href="#Editor-Default-Resources" class="headerlink" title="Editor Default Resources"></a>Editor Default Resources</h2><p>存放编辑器下的默认资源，这些资源只能通过<code>EditorGUIUtility.Load</code>函数按需进行加载，一个unity工程只能存在一个此文件夹。必须放在项目Assets根目录下</p>
+<h2 id="Gizmos"><a href="#Gizmos" class="headerlink" title="Gizmos"></a>Gizmos</h2><p>存储编辑器中的特殊对象图标，一个unity工程只能存在一个此文件夹。必须放在项目Assets根目录下，不会发布到runtime</p>
+<h2 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h2><p>存放原型设计时可以从脚本中按需加载的资源，通过<code>Resources.Load</code>接口加载此类资源。这个文件夹通常是Unity中性能问题的主要来源，使用不当，很容易造成unity项目构建出现膨胀，导致内存消耗过高，启动时间显著增加，应用包体过大等问题。建议在正式项目中不要使用<code>Resources</code>目录，尽量使用<code>AssetBundle</code>来构建和加载资源</p>
+<h2 id="Standard-Assets"><a href="#Standard-Assets" class="headerlink" title="Standard Assets"></a>Standard Assets</h2><p>存放导入的标准资源包，该文件夹内的脚本编译优先级最高，每一个unity工程只能存在一个此文件夹。必须放在项目Assets根目录下，一般情况很少使用此文件夹。</p>
+<h2 id="StreamingAssets"><a href="#StreamingAssets" class="headerlink" title="StreamingAssets"></a>StreamingAssets</h2><p>存放不随应用程序构建，而希望独立以原始文件格式提供的资源，如单独的视频等流媒体文件，此文件夹中的文件可以按原样复制到目标计算机中，然后通过特定的文件夹单独访问该文件。每一个unity工程只能存在一个此文件夹。必须放在项目Assets根目录下，一般情况很少使用此文件夹。</p>
+<h1 id="Library"><a href="#Library" class="headerlink" title="Library"></a>Library</h1><pre><code>用来存储项目内部资产数据信息的目录，文件夹较大，一般是编辑器内部使用，不需要加入代码托管
+</code></pre>
+<h1 id="Packages"><a href="#Packages" class="headerlink" title="Packages"></a>Packages</h1><pre><code>用来存储项目依赖的包文件信息
+</code></pre>
+<h1 id="ProjectSettings"><a href="#ProjectSettings" class="headerlink" title="ProjectSettings"></a>ProjectSettings</h1><pre><code>用来存储项目设置信息
+</code></pre>
+<h1 id="UserSettings"><a href="#UserSettings" class="headerlink" title="UserSettings"></a>UserSettings</h1><pre><code>用来存储用户设置信息
+</code></pre>
+<h1 id="Temp"><a href="#Temp" class="headerlink" title="Temp"></a>Temp</h1><pre><code>存储临时数据，一旦关闭Unity，文件夹就会被删除
+</code></pre>
+<h1 id="Logs"><a href="#Logs" class="headerlink" title="Logs"></a>Logs</h1><pre><code>用来存储项目的日志信息（不包含编辑器的日志信息）
+</code></pre>
 
     </div>
 
@@ -317,7 +266,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>Post link: </strong>
-      <a href="https://cestcavision.github.io/2016/08/26/Mongodb/" title="MongoDB">https://cestcavision.github.io/2016/08/26/Mongodb/</a>
+      <a href="https://cestcavision.github.io/2024/08/21/Understanding-Unity-Engine-from-perspective-of-file-system/" title="Understanding Unity Engine from perspective of file system">https://cestcavision.github.io/2024/08/21/Understanding-Unity-Engine-from-perspective-of-file-system/</a>
   </li>
   <li class="post-copyright-license">
       <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN%20|%20en" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -325,19 +274,19 @@
 </ul>
 </div>
 
+          <div class="post-tags">
+              <a href="/tags/game-engine/" rel="tag"># game_engine</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2016/08/26/Mongodb-NOTE/" rel="prev" title="MongoDB">
-                  <i class="fa fa-angle-left"></i> MongoDB
+                <a href="/2023/06/13/Why-Apple-Widgets/" rel="prev" title="Why Apple Widgets == passenger?">
+                  <i class="fa fa-angle-left"></i> Why Apple Widgets == passenger?
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2016/09/04/%E9%97%AD%E5%8C%85%E5%87%BD%E6%95%B0%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%BE%AA%E7%8E%AF%E5%8F%98%E9%87%8F/" rel="next" title="闭包函数如何使用循环变量">
-                  闭包函数如何使用循环变量 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
